@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" > </script>
+        <script src="js/jquery.cookie.js" type="text/javascript" > </script>
+        <script src="js/tools.js" type="text/javascript" > </script>
+        <script src="js/login.js" type="text/javascript" > </script>
+        <script src="js/moment-with-langs.js" type="text/javascript" > </script>
+
+        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'/>
+        <link href="http://wbpreview.com/previews/WB0967058/assets/css/bootstrap.css" rel="stylesheet"/>
+        <link href="http://wbpreview.com/previews/WB0967058/assets/css/bootstrap-responsive.css" rel="stylesheet"/>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Squada+One' rel='stylesheet' type='text/css'/> 
+        <link href='css/custom.css' rel='stylesheet' type='text/css'/> 
+
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                </div>
+                <div class="span4"  style="margin-top:90px;">
+                    <div class="block-unit" style="text-align:center; padding:8px 8px 8px 8px;" id="authorizationDiv">
+                        <!--                        <img src="assets/img/portfolio/portfolio150x150-color.jpg" alt="" class="img-circle"/>-->
+                        <h2 style="font-family: 'Pacifico', Arial;">CardioMood</h2>
+                        <br/>
+                        <div id="loginWrapper" >
+                            <h5>Авторизация</h5>
+                            <div class="cmxform" id="loginForm" style="margin-bottom: 20px;" >
+                                <!--                                <fieldset>-->
+                                <p>
+                                    <input id="email" name="email" type="text" placeholder="Email"  />
+                                    <input id="password" name="password" type="password" placeholder="Password" />
+                                </p>
+                                <!--                                    <input  type="submit" class="submit btn-warning btn btn-large" value="Login"  />-->
+                                <span id="loginButton" class="submit btn-warning btn btn-large"  >Войти</span> <br/>
+                                <!--                                </fieldset>-->
+                            </div>
+                            <span>Не зарегистрированы?</span> <a href="javascript: void(0);" onclick="$('#loginWrapper').toggle(); $('#registerWrapper').toggle();" >зарегистрироваться</a>
+                        </div>
+
+                        <div id="registerWrapper"  style="display: none;">
+                            <h5>Регистрация</h5>
+                            <div class="cmxform" id="registerForm" >
+                                <fieldset style="margin-bottom: 20px;">
+                                    <p>
+                                        <input id="registerEmail" name="email" type="text" placeholder="Email"/>
+                                        <input id="registerPassword" name="password" type="password" placeholder="Password"/>
+                                        <input id="registerPasswordConfirmation" name="confirm_password" type="password" placeholder="Confirm password"/>
+                                    </p>
+                                    <!--                                    <input class="submit btn-warning btn btn-large" type="submit" value="Register"/>-->
+                                    <span id="registerButton" class="submit btn-warning btn btn-large"  >Зарегистрироваться</span> <br/>
+                                </fieldset>
+                            </div>
+                            Уже зарегистрированы? <a href="javascript: void(0);" onclick="$('#loginWrapper').toggle(); $('#registerWrapper').toggle();" >вход</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" >
+            
+            function test(){
+                
+            }
+            
+            $(function(){
+                cdl = new CardioDataLogin();
+                cdl.init();
+                
+            });
+            
+        </script>
+
+    </body>
+</html>

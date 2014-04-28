@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Настройка соединения с пульсометром (Android) - CardioMood - Коломна</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'/>
+<!--        <link href="http://wbpreview.com/previews/WB0967058/assets/css/bootstrap.css" rel="stylesheet"/>-->
+        <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<!--        <link href="http://wbpreview.com/previews/WB0967058/assets/css/bootstrap-responsive.css" rel="stylesheet"/>-->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Squada+One' rel='stylesheet' type='text/css'/> 
+
+<!--        <link href='css/custom.css' rel='stylesheet' type='text/css'/> -->
+
+	<style type="text/css">
+        body { padding-top: 50px; }
+		.container img{
+            width: 80%;
+            margin-left: 10%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+
+    </head>
+    <body>
+
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">CardioMood - Коломна</a>
+                </div>
+            </div>
+        </div>
+		
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+					<div class="page-header">
+						<h1>Соединение с пульсометром (Android)</h1>
+					</div>
+					<div>
+						<ol class="breadcrumb">
+						  <li><a href="../">Главная</a></li>
+						  <li><a href="./index.html">Инструкции</a></li>
+						  <li class="active">Соединение с пульсометром (Android)</li>
+						</ol>
+					</div>
+				
+					<div class="bs-docs-section">
+						<p>
+                            Для проведения измерения необходимо установить соединение между датчиком (пульсометром) и Вашим телефоном.
+                            Процесс установления соединения зависит от версии телефона и ОС Android.
+						</p>
+                        <h3>Установка сопряжения на телефоне Motorola</h3>
+                        <p>
+                            На телефоне Motorola с версией Android ниже 4.3
+                            для соединения с пульсометром требуется предварительно настроить Bluetooth-сопряжение.
+                        </p>
+                        <p class="alert alert-info">
+                            Если версия Android Вашего телефона - 4.3 и выше, то сопряжение настраивать необязательно.
+                        </p>
+                        <p>
+                            <b>Шаг 1.</b> Войдите в приложение CardioMood. Вы увидите главное окно программы.
+                        </p>
+                        <p>
+                            <b>Шаг 2.</b> Откройте настройки Bluetooth: <b>Меню -> Найстройки Bluetooth</b>
+                            (либо значок Bluetooth в панели инструментов)
+                        </p>
+                        <div class="col-md-6">
+                            <img src="images/android/main-window.png"/>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="images/android/bluetooth-settings-on.png"/>
+                        </div>
+                        <p>
+                            <b>Шаг 3.</b> Включите Bluetooth, используя переключатель в правом верхнем углу окна настроек Bluetooth.
+                            Затем выполните поиск устройств Bluetooth (телефон попытается обнаружить пульсометр).
+                        </p>
+                        <p class="alert alert-warning">
+                            Пульсометр должен быть надет. Если Вы не видите ваш пульсометр в списке обнаруженный устройств,
+                            смочите ремень для улучшения контакта с кожей и повторите поиск.
+                        </p>
+                        <div class="col-md-6">
+                            <img src="images/android/bluetooth-settings-on.png"/>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="images/android/bluetooth-settings-discovery.png"/>
+                        </div>
+                        <p>
+                            <b>Шаг 4.</b> Выберите Ваш пульсометр в списке обнаруженных устройств и подтвердите установку сопряжения.
+                            Пульсометр должен появиться в списке сопряженных устройств.
+                        </p>
+                        <div class="col-md-6">
+                            <img src="images/android/bluetooth-settings-pairing.png"/>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="images/android/bluetooth-settings-paired.png"/>
+                        </div>
+                        <p>После успешного сопряжения, вернитесь к приложению, нажав кнопку <b>Назад</b> на телефоне.</p>
+
+                        <h3>Соединение с пульсометром</h3>
+                        <p>
+                            <b>Шаг 1.</b>  Если Ваш телефон Motorola c версией Android 4.2 и ниже, установите сопряжение с пульсометром,
+                            руководствуясь предыдущим разделом.
+                        </p>
+                        <p>
+                            <b>Шаг 2.</b> Нажмите кнопку "Подключение датчика".
+                            Телефон выполнит поиск пульсометра.
+                        </p>
+                        <p class="alert alert-info">
+                            Если Bluetooth не был включен, программа предложит его включить &mdash; в появившемся диалоговом окне
+                            подтвердите подключение.
+                        </p>
+                        <div class="col-md-6">
+                            <img src="images/android/main-window.png"/>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="images/android/connection-dialog.png"/>
+                        </div>
+                        <p>
+                            <b>Шаг 3.</b> В появившемся списке обнаруженных датчиков, выберите Ваш прибор.
+                            Программа выполнит попытку подключения и Вы увидите окно мониторинга.
+                        </p>
+                        <p class="alert alert-info">
+                            При возникновении проблем с подключением обращайтесь к разделу <a class="alert-link" href="android-problems.html">Решение проблем</a>.
+                        </p>
+                    </div>
+                </div>
+			</div>
+			<hr>
+
+            <footer>
+                <p>&copy; CardioMood 2014</p>
+            </footer>
+        </div> <!-- /container -->
+
+    </body>
+</html>
+
