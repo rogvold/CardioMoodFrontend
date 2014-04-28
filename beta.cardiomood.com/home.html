@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Neon Admin Panel" />
+        <meta name="author" content="" />
+
+        <title>Занятие</title>
+
+        <link rel="stylesheet" href="assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
+        <link rel="stylesheet" href="assets/css/font-icons/entypo/css/entypo.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
+        <link rel="stylesheet" href="assets/css/neon.css">
+        <link rel="stylesheet" href="assets/css/custom.css">
+
+        <script src="assets/js/jquery-1.10.2.min.js"></script>
+        <script src="assets/js/rainbowvis.js"></script>
+        <!--        <script src="assets/js/gauge.min.js"></script>-->
+        <script src="js/amcharts.js"></script>
+        <script src="js/serial.js"></script>
+        <script src="js/themes/none.js"></script>
+        <script src="js/gauge.js"></script>
+
+
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <style type="text/css">
+            /*            ul.nav.nav-tabs li{
+                            width: 32%;
+                        }
+                        ul.nav.nav-tabs li a{
+                            margin-left: 0px;
+                        }*/
+            .tile-stats{
+                cursor: pointer;
+            }
+
+            .outerEnergy {
+                /*                width: 15%;*/
+                width: 45%;
+                float: right;
+                /*                height: 140px;*/
+                height: 100%;
+                /*                border: 2px solid #ccc;*/
+                border: 2px solid gray;
+                overflow: hidden;
+
+                position: relative;
+
+                -moz-border-radius: 4px;
+                -webkit-border-radius: 4px;
+                border-radius: 4px;
+
+                background: whitesmoke;
+            }
+
+            .innerEnergy, .innerEnergy div {
+                width: 100%;
+                overflow: hidden;
+                /*                left: -2px;*/
+                position: absolute;
+            }
+
+            .innerEnergy {
+                border: 2px solid #999;
+                border-top-width: 0;
+                background-color: #00a65a;
+                /*                background-color: transparent;*/
+
+                bottom: 0;
+                height: 0%;
+            }
+
+            .innerEnergy div {
+                /*                border: 2px solid orange;*/
+                border-bottom-width: 0;
+                background-color: #999;
+
+                top: 0;
+                width: 100%;
+                height: 3px;
+            }
+
+            svg g{
+                margin: 0 auto !important;
+            }
+
+            #main-menu li a{
+                padding-right: 5px !important;
+                padding-left: 5px !important;
+            }
+
+            #main-menu li.sessionsListItem.active a{
+                background-color: white !important;
+                color: #f56954 !important;
+                font-weight: bold;
+                font-size: 14px;
+            }
+
+            #main-menu{
+                max-height: 650px;
+                overflow-y: auto;
+            }
+
+            li.sessionsListItem a span.sessionName{
+                max-width: 140px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                display: inline-block;
+            }
+
+        </style>
+
+    </head>
+    <body class="page-body  page-fade" data-url="http://neon.dev">
+
+        <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->	
+
+            <div class="sidebar-menu">
+
+
+                <header class="logo-env" style="padding: 20px;">
+
+                    <!-- logo -->
+                    <div class="logo" style="font-size: 20px; color: white;">
+                        <a href="javascript: void(0);" style="color: whitesmoke;">
+                            <!--                            <img src="assets/images/logo@2x.png" width="120" alt="" />-->
+                            <img src="assets/images/CardioMood.png" style="width: 190px;" />
+                        </a>
+                    </div>
+
+                    <!-- logo collapse icon -->
+
+                    <div class="sidebar-collapse" style="display: none;">
+                        <a href="#" class="sidebar-collapse-icon with-animation"><!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
+                            <i class="entypo-menu"></i>
+                        </a>
+                    </div>
+
+
+
+                    <!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
+                    <div class="sidebar-mobile-menu visible-xs">
+                        <a href="#" class="with-animation"><!-- add class "with-animation" to support animation -->
+                            <i class="entypo-menu"></i>
+                        </a>
+                    </div>
+
+                </header>
+
+
+
+
+                <h4 style="color: #aaabae; padding-left: 2px; border-bottom: 2px solid white; padding-bottom: 10px; margin-bottom: 1px;" >
+                    Моя история
+                </h4>
+
+                <ul id="main-menu" class="">
+
+                </ul>
+
+            </div>	
+            <div id="mainPanel" class="main-content" style="display: none;" >
+
+                <div class="row">
+
+                    <!-- Profile Info and Notifications -->
+                    <div class="col-md-6 col-sm-8 clearfix">
+
+                        <ul class="user-info pull-left pull-none-xsm">
+
+                            <!-- Profile Info -->
+                            <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="assets/images/guest.png" alt="" class="img-circle" width="44" />
+                                    <span id="userNameSpan" ></span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+
+                                    <!-- Reverse Caret -->
+                                    <li class="caret"></li>
+
+                                    <!-- Profile sub-links -->
+                                    <li>
+                                        <a href="javascript: alert('Функция скоро будет доступна');">
+                                            <i class="entypo-user"></i>
+                                            Редактировать профиль
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript: alert('Функция скоро будет доступна');">
+                                            <i class="entypo-mail"></i>
+                                            Сообщения
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript: alert('Функция скоро будет доступна');">
+                                            <i class="entypo-clipboard"></i>
+                                            Занятия
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+
+                        <ul class="user-info pull-left pull-right-xs pull-none-xsm">
+
+
+
+                            <!-- Task Notifications -->
+                            <li class="notifications dropdown">
+
+                                <!--                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                                    <i class="entypo-list"></i>
+                                                                    <span class="badge badge-warning">1</span>
+                                                                </a>-->
+
+                                <ul class="dropdown-menu">
+                                </ul>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <!-- Raw Links -->
+                    <div class="col-md-6 col-sm-4 clearfix hidden-xs">
+
+                        <ul class="list-inline links-list pull-right">
+                            <!--<li>-->
+                            <!--<a href="javascript: void(0);">История</a>-->
+                            <!--</li>-->
+
+                            <!--<li class="sep"></li>-->
+
+                            <!--<li>-->
+                            <!--<a href="#" data-toggle="chat" data-animate="1" data-collapse-sidebar="1">-->
+                            <!--<i class="entypo-chat"></i>-->
+                            <!--Сообщения-->
+
+                            <!--<span class="badge badge-success chat-notifications-badge is-hidden">0</span>-->
+                            <!--</a>-->
+                            <!--</li>-->
+
+                            <!--<li class="sep"></li>-->
+
+                            <li>
+                                <a href="javascript: void(0);" onclick="localStorage.setItem('token', undefined); window.location.href='login.html';" >
+                                    Выход <i class="entypo-logout right"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-8 clearfix">
+                        <div id="currentNameBlock">
+                            <h2 class="currentSessionName" id="currentSessionName" style="cursor: pointer; display: inline-block;"></h2> 
+                            <img src="assets/images/pensil.png" style="height: 24px; vertical-align: baseline; cursor: pointer;" onclick="$('#currentNameBlock').hide(); $('#currentSessionRenameBlock').show(); csm.updatingEnabled=false;" />
+                        </div>
+                        <div id="currentSessionRenameBlock" style="display: none;">
+                            <input style="width: 100%; font-size: 16px;" id="currentSessionTextarea" placeholder="Введи название сессии" /><br/>
+                            <button id="currentSessionRenameButton"  style="float: right;margin-top: 5px;">Применить</button>
+                            <button id="currentSessionRenameCancelButton" onclick="$('#currentSessionRenameBlock').hide(); $('#currentNameBlock').show();  csm.updatingEnabled=true;" style="float: right;margin-top: 5px; margin-left: 5px; margin-right: 5px;">Отмена</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-4 clearfix hidden-xs" style="border-left: 1px solid #ebebeb;">
+                        <h3>
+                            Дата: <span class="currentSessionStartDateSpan" style="color: #00a651;"></span><br/>
+                            Продолжительность: <span class="currentSessionDurationSpan" style="color: #00a651;"></span><br/>
+
+                        </h3>
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <script type="text/javascript">
+	
+                </script>
+
+
+                <div class="row">
+                    <div class="col-sm-4">
+
+                        <div class="tile-stats tile-red" onclick="$('#pulseTab').click();">
+                            <div class="icon"><i class="entypo-heart"></i></div>
+                            <div class="num" id="pulseVal" data-start="0" data-end="83" data-postfix="" data-duration="1500" data-delay="0">0</div>
+
+                            <h3>Пульс</h3>
+                            <p>
+
+                                <!--                                Норма-->
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-4">
+
+                        <div class="tile-stats tile-green"  onclick="$('#energyTab').click();">
+                            <div class="icon"><i class="entypo-rocket"></i></div>
+                            <div class="num" data-start="0" data-end="0" id="energyVal" data-postfix="" data-duration="1500" data-delay="600">0</div>
+
+                            <h3>Закисление</h3>
+                            <p> </p>
+                            <div  style="position: absolute; right: -10px; bottom: 5px; width: 70%; height: 93%;">
+                                <!--                                <canvas id="stressGauge" style="height: 100%; width: 100%;"></canvas>-->
+                                <div id="sigmaGauge" style="height: 100%; width: 100%;"></div>
+                            </div>
+                            <!--                            <p>Отдохните немного</p>-->
+
+
+                            <!--                            <div style="position: absolute; right: 5px; bottom: 0px; width: 50%; height: 98%;">
+                                                            <div class="outerEnergy" style="margin: 0 auto;">
+                                                                <div class="innerEnergy">
+                                                                    <div></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-4">
+
+                        <div class="tile-stats tile-aqua" onclick="$('#stressTab').click();" >
+                            <div class="icon"><i class="entypo-gauge"></i></div>
+                            <div class="num" id="stressVal" data-start="0" data-end="0" data-postfix="" data-duration="1500" data-delay="1200">0</div>
+
+                            <h3>Стресс</h3>
+                            <!--                            <p>В пределах нормы</p>-->
+                            <p> </p>
+                            <div id="graphPanel" style="position: absolute; right: -10px; bottom: 5px; width: 70%; height: 93%;">
+                                <!--                                <canvas id="stressGauge" style="height: 100%; width: 100%;"></canvas>-->
+                                <div id="stressGauge" style="height: 100%; width: 100%;"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <br />
+
+                <div class="row">
+                    <div class="col-sm-12" style="" >
+
+                        <div class="panel panel-primary" id="charts_env" style="" >
+
+                            <!--                            <div class="panel-heading">
+                                                                                            <div class="panel-title">Site Stats</div>
+                            
+                                                            <div class="panel-options" style="float: none; text-align: center; padding-right: 0px;">
+                                                                <ul class="nav nav-tabs">
+                                                                    <li class="active"><a id="pulseTab" href="#area-chart" data-toggle="tab">Пульс</a></li>
+                                                                    <li class=""><a id="energyTab" href="#line-chart" data-toggle="tab">Дисперсия</a></li>
+                                                                    <li class=""><a id="stressTab" href="#pie-chart" data-toggle="tab">Стресс</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>-->
+
+                            <div class="panel-body"  >
+
+                                <div class="tab-content" style="">
+
+                                    <div class="" id="area-chart" style=" width: 100%;">							
+                                        <!--                                        <div id="area-chart-demo" class="morrischart" style="height: 300px"></div>-->
+                                        <div class="panel-body no-padding">
+                                            <!--                                            <div id="rickshaw-chart-demo">-->
+                                            <h2>
+                                                Пульс
+                                            </h2>
+                                            <div id="pulseChart" style="width: 100%; height: 350px;">
+                                                <!--                                                <div id="rickshaw-legend"></div>-->
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class=" " id="line-chart"  style=" width: 100%;" >
+                                        <!--                                        <div id="line-chart-demo" class="morrischart" style="height: 300px; text-align: center;">
+                                                                                                                                <div class="outerEnergy" style="margin: 0 auto;">
+                                                                                                                                    <div class="innerEnergy">
+                                                                                                                                        <div></div>
+                                                                                                                                    </div>
+                                                                                                                                </div>
+                                                                                </div>-->
+                                        <div class="panel-body no-padding">
+                                            <h2>
+                                                Закисление
+                                            </h2>
+                                            <div id="sigmaChart" style="width: 100%; height: 350px;">
+                                                <!--                                                <div id="rickshaw-legend"></div>-->
+                                            </div>
+
+                                            <!--                                            <div id="rickshaw-chart-demo2">
+                                                                                            <div id="rickshaw-legend2"></div>
+                                                                                        </div>-->
+                                            <!--                                            <div id="stressChart" style="width: 100%; height: 350px;">
+                                                                                                                                            <div id="rickshaw-legend"></div>
+                                                                                        </div>-->
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="" id="pie-chart"  style=" width: 100%;" >
+                                        <div class="panel-body no-padding">
+                                            <h2>
+                                                Стресс
+                                            </h2>
+                                            <div id="stressChart" style="width: 100%; height: 350px;">
+                                                <!--                                                <div id="rickshaw-legend"></div>-->
+                                            </div>
+                                        </div>
+                                        <!--                                        <canvas id="stressGauge" style="height: 200px;"></canvas>-->
+                                        <!--                                        <div id="donut-chart-demo" class="morrischart" style="height: 300px;"></div>-->
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>	
+
+                    </div>
+
+
+
+
+                </div>
+
+
+                <br />
+
+                <!-- Footer -->
+                <footer class="main">
+
+
+                    &copy; 2014 <strong>CardioMood</strong>
+
+                </footer>	
+            </div>
+
+            <div id="splashPanel" style="display: block;" class="main-content">
+                <h3>
+                    <img src="assets/images/preloader.gif" style="height: 35px;" />
+                    Пожалуйста, подождите
+                </h3>
+            </div>
+
+        </div>
+
+
+
+
+        <link rel="stylesheet" href="assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
+        <link rel="stylesheet" href="assets/js/rickshaw/rickshaw.min.css">
+
+        <!-- Bottom Scripts -->
+        <script src="assets/js/gsap/main-gsap.js"></script>
+        <script src="assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/joinable.js"></script>
+        <script src="assets/js/resizeable.js"></script>
+        <script src="assets/js/neon-api.js"></script>
+        <script src="assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script src="assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>
+        <script src="assets/js/jquery.sparkline.min.js"></script>
+        <script src="assets/js/rickshaw/vendor/d3.v3.js"></script>
+        <script src="assets/js/rickshaw/rickshaw.min.js"></script>
+        <script src="assets/js/raphael-min.js"></script>
+        <script src="assets/js/morris.min.js"></script>
+        <script src="assets/js/toastr.js"></script>
+        <script src="assets/js/neon-chat.js"></script>
+        <script src="assets/js/neon-custom.js"></script>
+        <script src="assets/js/neon-demo.js"></script>
+        <script src="js/tools.js" type="text/javascript" ></script>
+        <script src="js/moment-with-langs.js" type="text/javascript" > </script>
+        <script src="js/homeCardioSession.js"></script>
+
+        <script type="text/javascript">
+            $(function(){
+                csm = new CardioSessionManager();
+                csm.init();
+                csm.loadSessionList();
+            });
+        </script>
+
+        <!--<div id="chartdiv" style="width: 100%; height: 400px;"></div>-->
+    </body>
+</html>
