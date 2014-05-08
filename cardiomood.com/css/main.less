@@ -1,0 +1,901 @@
+/* ==========================================================================
+   Import CSS files
+   ========================================================================== */
+
+@import "mixins";
+@import "bootstrap";
+@import "compact";
+
+
+@import url('http://fonts.googleapis.com/css?family=Droid+Sans:400,700');
+
+
+
+@baseColor: #fb5359;
+
+
+/* ==========================================================================
+   Generic
+   ========================================================================== */
+
+html {
+    height: 100%;
+}
+
+body {
+    #gradient .vertical(#f7f7f7, #fff);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Helvetica, Arial;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #404040;
+    font-family: 'Droid Sans';
+    text-shadow: 0 1px #fff;
+}
+
+h3.space {
+    margin-top: 30px;
+    line-height: 1;
+}
+
+p, ul, ol {
+    color: #555;
+}
+
+header#header {
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    #gradient .vertical(#ffffff, #f9f9f9);
+    .box-shadow(0 1px 4px #aaa);
+
+        .container {
+            width: auto;
+            max-width: 940px;
+            min-width: 420px;
+        }
+
+
+        #logo {
+            text-indent: -9999px;
+            background: url('../img/logo.png') no-repeat;
+            width: 120px;
+            height: 48px;
+            padding: 0px;
+            margin: 5px 0;
+        }
+
+
+        .navbar {
+            padding-bottom: 0px;
+
+                & > ul {
+                    float: left;
+                    margin-left: 35px;
+                    margin-top: 20px;
+
+                        li > .dropdown-menu::before {
+                            position: absolute;
+                            top: -7px;
+                            left: 9px;
+                            display: inline-block;
+                            border-right: 7px solid transparent;
+                            border-bottom: 7px solid #bbb;
+                            border-left: 7px solid transparent;
+                            content: '';
+                        }
+
+                        li > .dropdown-menu::after {
+                            position: absolute;
+                            top: -6px;
+                            left: 9px;
+                            display: inline-block;
+                            border-right: 6px solid transparent;
+                            border-bottom: 6px solid #f5f5f5;
+                            border-left: 6px solid transparent;
+                            content: '';
+                        }
+
+                        li > .dropdown-menu {
+                            top: 30px;
+                            background: #f5f5f5;
+
+                                li {
+
+                                        a {
+                                            color: #333;
+                                            font-weight: 500;
+                                        }
+
+                                        a:hover, &.active a {
+                                            background: @baseColor;
+                                            color: #fff;
+                                        }
+                                }
+                        }
+
+                        & > li {
+                            float: left;
+                            list-style: none;
+                            margin-left: 20px;
+                            position: relative;
+
+                                & > a {
+                                    padding: 5px 0px;
+                                    color: #333;
+                                    font-weight: 300;
+                                    .border-radius(15px);
+                                }
+
+                                &.active a {
+                                    font-weight: bold;
+                                    color: darken(@baseColor, 10%);
+
+                                        &:hover {
+                                            text-decoration: none;
+                                        }
+                                }
+
+                                a:hover {
+
+                                }
+                        }
+                }
+
+
+                .sign-in {
+                    float: right;
+                    margin-top: 20px;
+                    color: #333;
+                    font-weight: 300;
+                }
+        }
+}
+
+
+.container {
+    padding: 0 15px;
+}
+
+.container[role=main] {
+    position: relative;
+    padding-top: 80px; /* 60px to make the container go all the way to the bottom of the topbar */
+    padding-bottom: 50px; // footer space
+    .clearfix();
+}
+
+
+/* ==========================================================================
+   Frontpage
+   ========================================================================== */
+
+.feature {
+    margin-top: 100px;
+
+        ul.intro, p.intro {
+            font-size: 26px;
+            font-weight: 300;
+            line-height: 1.3;
+            -webkit-font-smoothing: antialiased;
+            margin-bottom: 20px;
+            text-shadow: 0 1px #fff;
+        }
+
+        .btn {
+            background: @baseColor;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .testimonial {
+            .clearfix();
+            margin-top: 30px;
+
+                blockquote {
+                    margin-top: 50px;
+                }
+        }
+
+        &.mac {
+            margin-top: 40px;
+        }
+}
+
+
+.feature-right {
+    margin-top: 40px;
+
+
+        &.mac {
+            margin-top: 20px;
+        }
+
+        .iphone {
+            position: relative;
+            margin: 0px auto;
+            background: url('../img/iphone.png') no-repeat;
+            width: 296px;
+            height: 582px;
+
+                .iphone-glare {
+                    background: url('../img/iphone-glare.png') no-repeat;
+                    width: 296px;
+                    height: 582px;
+                    position: absolute;
+                    z-index: 99;
+                }
+
+                .iphone-screen {
+                    position: absolute;
+                    display: block;
+                    background: #000;
+                    width: 248px;
+                    height: 372px;
+                    top: 102px;
+                    left: 24px;
+
+                        img {
+                            max-width: 248px;
+                            max-height: 372px;
+                        }
+
+                        .carousel {
+
+                                .carousel-control {
+                                    .opacity(10);
+                                    top: 50%;
+
+                                        &.left { left: -80px; }
+                                        &.right { right: -80px; }
+
+                                        &:hover {
+                                            .opacity(80);
+                                        }
+                                }
+                        }
+                }
+        }
+
+
+        .iphone5 {
+            position: relative;
+            margin: 0px auto;
+            background: url('../img/iphone5.png') no-repeat;
+            width: 296px;
+            height: 582px;
+
+                .iphone5-glare {
+                    background: url('../img/iphone5-glare.png') no-repeat;
+                    width: 296px;
+                    height: 582px;
+                    position: absolute;
+                    z-index: 99;
+                }
+
+                .iphone5-screen {
+                    position: absolute;
+                    display: block;
+                    background: #000;
+                    width: 228px;
+                    height: 406px;
+                    top: 86px;
+                    left: 33px;
+
+                        img {
+                            max-width: 228px;
+                            max-height: 406px;
+                        }
+
+                        .carousel {
+
+                                .carousel-control {
+                                    .opacity(10);
+                                    top: 50%;
+
+                                        &.left { left: -80px; }
+                                        &.right { right: -80px; }
+
+                                        &:hover {
+                                            .opacity(80);
+                                        }
+                                }
+                        }
+                }
+        }
+
+        .macbook {
+            position: relative;
+            float: right;
+            background: url('../img/macbook.png') no-repeat;
+            width: 600px;
+            height: 342px;
+
+                .macbook-glare {
+                    background: url('../img/macbook-glare.png') no-repeat;
+                    width: 600px;
+                    height: 342px;
+                    position: absolute;
+                    z-index: 9;
+                }
+
+                .macbook-screen {
+                    position: absolute;
+                    display: block;
+                    background: #000;
+                    width: 388px;
+                    height: 243px;
+                    top: 35px;
+                    left: 106px;
+
+                        img {
+                            max-width: 388px;
+                            max-height: 243px;
+                        }
+
+                        .carousel {
+
+                                .carousel-control {
+                                    .opacity(10);
+                                    top: 50%;
+                                    z-index: 100;
+
+                                        &.left { left: -80px; }
+                                        &.right { right: -80px; }
+                                        &:hover {
+                                            .opacity(80);
+                                        }
+                                }
+                        }
+                }
+        }
+
+
+        .ipad {
+            position: relative;
+            float: right;
+            background: url('../img/ipad.png') no-repeat;
+            width: 582px;
+            height: 494px;
+
+                .ipad-glare {
+                    background: url('../img/ipad-glare.png') no-repeat;
+                    width: 600px;
+                    height: 342px;
+                    position: absolute;
+                    z-index: 9;
+                }
+
+                .ipad-screen {
+                    position: absolute;
+                    display: block;
+                    background: #000;
+                    width: 447px;
+                    height: 335px;
+                    top: 78px;
+                    left: 59px;
+
+                        img {
+                            max-width: 447px;
+                            max-height: 335px;
+                        }
+
+                        .carousel {
+
+                                .carousel-control {
+                                    .opacity(10);
+                                    top: 50%;
+                                    z-index: 100;
+
+                                        &.left { left: -110px; }
+                                        &.right { right: -110px; }
+                                        &:hover {
+                                            .opacity(80);
+                                        }
+                                }
+                        }
+                }
+        }
+
+}
+
+
+
+/* ==========================================================================
+   Page & post
+   ========================================================================== */
+
+.page, .post {
+    margin-top: 15px;
+
+        h1.title {
+            width: 80%;
+            line-height: 1.3;
+            font-size: 25px;
+        }
+
+        h2 {
+            font-size: 22px;
+        }
+
+        h3 {
+            font-size: 18px;
+        }
+
+        h4 {
+            font-size: 15px;
+            line-height: 1.3;
+        }
+
+        p, ul, ol {
+            font-family: Georgia;
+            font-size: 15px;
+            line-height: 24px;
+        }
+
+        ul, ol {
+
+             li {
+                margin: 6px 0;
+             }
+        }
+
+        .team {
+            margin-top: 20px;
+
+                a:focus {
+                    outline: none;
+                }
+        }
+
+        .modal {
+
+            h3 {
+            font-size: 24px;
+            margin-top: 8px;
+            line-height: 1.3;
+
+                small {
+                    margin-left: 3px;
+                }
+            }
+
+            p {
+                font-family: Helvetica, Arial;
+                font-size: 12px;
+                line-height: 1.7;
+            }
+
+            .modal-footer {
+
+                    p {
+                        margin: 0px;
+                        color: #777;
+
+                            a {
+                                color: @baseColor;
+                            }
+                    }
+            }
+        }
+
+
+        .opening {
+            margin-top: 20px;
+            background: #fffff2;
+            .border-radius(0px);
+            border: 1px solid #fff;
+            outline: 1px solid #ccc;
+            .box-shadow(0 5px 7px -5px #333);
+            .transition(.3s);
+
+                &:hover {
+                    .box-shadow(0 5px 10px -5px #111);
+                }
+
+                p, ul, ol {
+                    text-shadow: 0 1px #fff;
+                    font-family: Helvetica;
+                    font-size: 12px;
+                }
+
+                ul, ol {
+                    margin: 0px;
+                    font-size: 12px;
+
+                        i {
+                            margin-right: 5px;
+                            margin-top: -1px;
+                        }
+                }
+        }
+
+
+        .date {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: 800;
+            display: block;
+            background: @baseColor;
+            float: left;
+            width: 95px;
+            text-align: center;
+            .border-radius(100px);
+            padding: 30px 0 25px;
+            color: #fff;
+        }
+
+        article {
+            border-top: 1px solid #fff;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 25px;
+            padding-top: 25px;
+
+                &.first {
+                    border-top: 0px;
+                    padding-top: 0px;
+                }
+        }
+
+        .blog-title {
+            margin-top: 15px;
+            margin-bottom: 0px;
+            line-height: 1.1;
+
+                a {
+                    color: #444;
+                }
+        }
+
+        .meta {
+            margin: 0px 0 10px 0;
+            font-family: Helvetica neue;
+            font-size: 12px;
+
+                a {
+                    font-weight: 800;
+                    color: #444;
+                }
+        }
+
+        .pagination {
+            margin-top: 20px;
+
+                a, span {
+                    color: #aaa;
+                    margin-right: 8px;
+                    float: left;
+                    font-size: 12px;
+                    border-right: 1px solid #aaa;
+                    padding: 0 10px 0 0;
+
+                        &:last-child {
+                            border-right: none;
+                        }
+                }
+
+                span, a:hover {
+                    font-weight: bold;
+                    color: #333;
+                    text-decoration: none;
+                }
+        }
+}
+
+
+/* ==========================================================================
+   Comments
+   ========================================================================== */
+
+#comments {
+
+        ol {
+            margin: 0px;
+
+                    ul {
+                        margin-bottom: 20px;
+                        margin-left: 40px;
+                    }
+
+                li {
+                    position: relative;
+                    list-style: none;
+                    padding: 5px 0;
+
+
+                        .avatar {
+                            float: left;
+                            margin-right: 10px;
+                            .border-radius(60px);
+                            background: #ccc;
+                            border: 4px solid #ddd;
+
+                                img {
+                                    padding: 0px;
+                                    float: left;
+                                    .border-radius(100px);
+                                    border: none;
+                                    margin-right: 0px;
+                                }
+                        }
+
+                        .text {
+
+                                h5 {
+                                    line-height: 1.5;
+                                    margin-top: 10px;
+                                    margin-bottom: 0px;
+
+                                        a {
+                                            color: #444;
+                                        }
+                                }
+
+                                p {
+                                    margin-top: 5px;
+                                    font-size: 14px;
+                                }
+
+
+                        }
+
+                        .reply {
+                            position: absolute;
+                            right: 0px;
+                            bottom: 0px;
+                            font-family: helvetica;
+                            font-size: 12px;
+
+                                a {
+                                    color: #888;
+                                }
+                        }
+                }
+        }
+
+        label {
+            display: inline;
+            font-family: Helvetica neue;
+        }
+
+        label:after {
+            content: ':'
+        }
+
+        .required {
+            display: inline;
+            color: @baseColor;
+            margin-left: 3px;
+        }
+
+        input, textarea {
+            display: block;
+        }
+
+        .form-allowed-tags {
+            font-family: Helvetica neue;
+            font-size: 12px;
+
+                code {
+                    display: block;
+                    font-size: 11px;
+                }
+        }
+}
+
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+
+aside {
+    margin-top: 68px;
+
+        .nav {
+
+            li {
+
+                a {
+                    .border-radius(15px);
+                    color: #333;
+                }
+
+                &.active a {
+                    background: lighten(@baseColor, 5%);
+
+                        &:hover {
+                            background: @baseColor;
+                        }
+                }
+            }
+
+            &.affix {
+                position: fixed;
+                top: 100px;
+                width: 140px;
+            }
+        }
+}
+
+
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+footer {
+    position: absolute;
+    bottom: 0px;
+
+        p {
+            font-size: 12px;
+            color: #777;
+            margin-right: 15px;
+
+                a {
+                    margin-left: 10px;
+                }
+
+        }
+}
+
+
+
+/* ==========================================================================
+   Elements
+   ========================================================================== */
+
+.btn {
+    .border-radius(20px);
+}
+
+blockquote {
+    margin-top: 25px;
+        
+        p {
+            font-style: italic;
+            line-height: 1.5;
+            font-size: 14px;
+            color: #666;
+
+                small span {
+                    color: lighten(@baseColor, 15%);
+                }
+        }
+}
+
+.carousel-caption p {
+    font-family: Helvetica;
+    font-size: 12px;
+}
+
+
+.press-image {
+    border: 1px solid #aaa;
+
+        &.dark {
+            border: 1px solid #111;
+        }
+}
+
+
+.nav.nav-tabs li {
+    margin: 0px 2px 0 0;
+
+        a {
+            font-family: Helvetica;
+            font-size: 12px;
+            margin: 0px;
+            padding: 5px 10px;
+        }
+
+        &.active a {
+            background: #f5f5f5;
+        }
+}
+
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+
+form {
+
+    label {
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 15px;
+        margin-top: 10px;
+
+            small {
+                color: #666;
+            }
+    }
+
+    input[type=text], textarea {
+        font-size: 13px;
+        line-height: 13px;
+        padding: 2px 5px;
+        .border-radius(0px);
+        .transition(0);
+
+            &:focus {
+                border: 1px solid #aaa;
+                .box-shadow(none);
+            }
+    }
+
+    textarea {
+        padding: 6px 5px;
+        width: 360px;
+    }
+
+    select {
+        font-size: 13px;
+        padding: 0px;
+        height: 26px;
+        width: 283px;
+    }
+}
+
+/* ==========================================================================
+   Compact page
+   ========================================================================== */
+
+body.compact {
+
+        header#header .container {
+            max-width: 728px;
+        }
+
+        aside .nav.affix {
+            position: fixed;
+            top: 100px;
+            width: 104px;
+        }
+}
+
+
+
+/* ==========================================================================
+   Coming soon
+   ========================================================================== */
+
+.container[role=main].coming-soon {
+    padding-top: 0px;
+
+        .feature {
+            margin-top: 180px;
+
+            #logo {
+                text-indent: -9999px;
+                background: url('../img/logo.png') no-repeat;
+                width: 120px;
+                height: 48px;
+                margin: 5px 0;
+            }
+
+            input.newsletter {
+                padding: 8px 10px;
+            }
+
+            input[type=submit] {
+                .border-radius(3px);
+                padding: 9px 15px;
+                font-weight: normal;
+            }
+        }
+
+        .feature-right.mac {
+            margin-top: 150px;
+        }
+
+        footer {
+            margin-left: 0px !important;
+        }  
+}
