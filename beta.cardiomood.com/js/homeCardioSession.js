@@ -213,9 +213,9 @@ CardioSessionManager = function(){
     
     this.initUpdatingInterval = function(){
         setInterval(function(){
-            console.log('initUpdatingInterval');
+            //console.log('initUpdatingInterval');
             if (($('.sessionsListItem.active').hasClass('freshSession') == false) || (self.updatingEnabled == false)){
-                console.log('not active...');
+                //console.log('not active...');
                 return;
             }
             console.log('active');
@@ -379,10 +379,13 @@ CardioSessionManager = function(){
         if (x == undefined){
             return undefined;
         }
+        if (x <= 0.0) {
+            return 0.0;
+        }
         if (x < 15){
             return 6.0*x;
         }
-        return (100 - 50.0/(14.85*Math.log(x) - 40));
+        return (100 - 50.0/(16.6171*Math.log(x) - 40));
     }
     
     this.setEnergyPercents = function(v){
@@ -391,7 +394,6 @@ CardioSessionManager = function(){
         $('#energyVal').text(Math.floor(v * 100.0)/ 100.0);
         
         //        v = Math.min(v * 100.0 / 40.0, 100.0)
-        v = self.getSigmaPercents(v);
         //        console.log(v);
         var t = self.getSigmaPercents(v) + '%';
         
@@ -402,8 +404,6 @@ CardioSessionManager = function(){
         col = '#'+col;
         
         $('.tile-stats.tile-green').css('background-color', col);
-        
-        v = 100.0 - v;
         
         if (self.gaugeSigmaChart == undefined){
             console.log('gaugeStressChart initing');
@@ -416,7 +416,7 @@ CardioSessionManager = function(){
                 "axes": [{
                     "axisThickness":1,
                     "bands": [{
-                        "color": "#84b761",
+                        "color": "#cc4748",
                         "startValue": 0,
                         "endValue": 10
                     }, {
@@ -424,7 +424,7 @@ CardioSessionManager = function(){
                         "startValue": 10,
                         "endValue": 76
                     }, {
-                        "color": "#cc4748",
+                        "color": "#84b761",
                         "startValue": 76,
                         "endValue": 100
                     }],
@@ -656,7 +656,7 @@ CardioSessionManager = function(){
         
         var lastSigma = intervals[1][intervals[1].length - 1];
         if (lastSigma != NaN){
-            self.setEnergyPercents(lastSigma);
+            self.setEnergyPercents(self.getSigmaPercents(lastSigma));
         }
         
         //        self.setEnergyPercents(Math.min(lastSigma * 100.0 / 40.0, 100.0));
@@ -683,7 +683,9 @@ CardioSessionManager = function(){
                 //                dateVal: intervals[0][i],
                 date: new Date(intervals[0][i] + t0),
                 //                dateVal: moment(intervals[0][i]).format('h:m:s'),
+                //rr: self.getSigmaPercents(intervals[1][i]),
                 rr: intervals[1][i],
+
                 lineColor: lineColor
             });
         }

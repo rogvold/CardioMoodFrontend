@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Проведение тренировки (Android) - CardioMood - Коломна</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'/>
+<!--        <link href="http://wbpreview.com/previews/WB0967058/assets/css/bootstrap.css" rel="stylesheet"/>-->
+        <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<!--        <link href="http://wbpreview.com/previews/WB0967058/assets/css/bootstrap-responsive.css" rel="stylesheet"/>-->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Squada+One' rel='stylesheet' type='text/css'/> 
+
+<!--        <link href='css/custom.css' rel='stylesheet' type='text/css'/> -->
+
+	<style type="text/css">
+        body { padding-top: 50px; }
+		.container img{
+            width: 80%;
+            margin-left: 10%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+
+    </head>
+    <body>
+
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">CardioMood - Коломна</a>
+                </div>
+            </div>
+        </div>
+		
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+					<div class="page-header">
+						<h1>Проведение тренировки (Android)</h1>
+					</div>
+					<div>
+						<ol class="breadcrumb">
+						  <li><a href="../">Главная</a></li>
+						  <li><a href="./index.html">Инструкции</a></li>
+						  <li class="active">Работа программы во время тренировки</li>
+						</ol>
+					</div>
+				
+					<div class="bs-docs-section">
+						<p class="alert alert-info">
+                            Во время тренировки, чтобы наблюдать за показателями удаленно с сайта, на телефоне должен быть
+                            доступ в интернет.
+						</p>
+                        <p>
+                            <b>Шаг 1.</b> Войдите в приложение CardioMood. Вы увидите главное окно программы.
+                        </p>
+                        <p>
+                            <b>Шаг 2.</b> Установите соединение с датчиком (см. раздел <a href="android-connect.html">Подключение датчика</a>)
+                        </p>
+                        <div class="col-md-6">
+                            <img src="images/android/main-window.png"/>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="images/android/connection-dialog.png"/>
+                        </div>
+                        <p>
+                            Вы увидите окно мониторинга. Ваш телефон должен получать данные от датчика,
+                            при этом на экране отображается Ваш текущий пульс. В правом верхнем углу экрана
+                            Вы видите кнопку <b>СТАРТ</b>.
+                        </p>
+                        <p class="alert alert-info">
+                            На этом этапе приложение работает в режиме наблюдения. Никакие данные
+                            не отправляются на сервер и не сохраняются в телефон.
+                        </p>
+                        <p>
+                            <b>Шаг 3.</b> В открывшемся окне измерения в правом верхнем углу экрана (на панели инструментов)
+                            нажмите <b>СТАРТ</b>. Теперь все данные сохраняются и можно начинать тренировку.
+                        </p>
+                        <p class="alert alert-info">
+                            Если телефон имеет доступ в интернет, приложение автоматически будет отправлять данные на сервер.
+                            За показателями можно удаленно наблюдать на сайте. <a class="alert-link" href="site.html" target="_blank">Подробнее</a>
+                        </p>
+                        <div class="col-md-6">
+                            <img src="images/android/monitoring-window.png"/>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="images/android/monitoring-in-progress.png"/>
+                        </div>
+
+                        <h3>Окно мониторинга</h3>
+                        <p>
+                            В окне мониторинга для наблюдения доступны следующие данные:
+                        </p>
+                        <ul>
+                            <li>Количество RR-интервалов, которое было получено за время мониторинга</li>
+                            <li>Время мониторинга (с момента нажатия кнопки <b>СТАРТ</b>)</li>
+                            <li>Текущий пульс - количество сердечных сокращений в минуту</li>
+                            <li>Текущий уровень стресса (психо-эмоционального напряжения)</li>
+                            <li>Текущий уровень "закисления" (условная величина, дает оценку накопления лактата в мышцах)</li>
+                        </ul>
+
+                        <h3>Завершение измерения</h3>
+                        <p>
+                            Для завершения измерения нажмите кнопку <b>СТОП</b> в правом верхнем углу окна мониторинга.
+                        </p>
+                        <p>
+                            Приложение завршит измерение и выполнит отключение от датчика, о чем будет свидетельствовать сигнал вибрации.
+                            На экране Вы увидите отчет по измерению, где можно посмотреть пульс от времени, стресс и закисление.
+                        </p>
+                        <p class="alert alert-info">
+                            Подробнее об отчетах вы можете узнать в разделе <a class="alert-link" href="android-reports.html">Просмотр отчетов</a>.
+                        </p>
+                    </div>
+                </div>
+			</div>
+			<hr>
+
+            <footer>
+                <p>&copy; CardioMood 2014</p>
+            </footer>
+        </div> <!-- /container -->
+
+    </body>
+</html>
+
