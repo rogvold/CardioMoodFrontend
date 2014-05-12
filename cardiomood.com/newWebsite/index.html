@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en" class="no-js"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en" class="no-js"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en" class="no-js"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+	<title>CardioMood - scientific approach to your heart rate</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="We analyze your heart rate to make you be up with your stress, energy and stamina level to help you become healthier">
+	<meta name="author" content="CardioMood.com">
+    <link href="assets/img/CardioMood-notext-96x96px.png" rel="shortcut icon" type="image/x-icon" />
+	<!-- Styles -->
+	<link href="assets/css/bootstrap.css" rel="stylesheet">
+	<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+	<link href="assets/css/style.css" rel="stylesheet">
+	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700' rel='stylesheet' type='text/css'>
+
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements and IE Fallback-->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+      <link href="assets/css/ie.css" rel="stylesheet">
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+<style type="text/css">
+a.brand img{
+   height: 40px;
+}
+
+
+.signupWidget.component, .text2appWidget.component {
+    position: relative;
+    z-index: 1;
+}
+
+button.success, .button.success {
+    border: none;
+    box-shadow: 0 2px 0px 0px #19b55a;
+    -moz-box-shadow: 0 2px 0px 0px #19b55a;
+    -webkit-box-shadow: 0 2px 0px 0px #19b55a;
+}
+
+ #signupWidgetContainer {
+    padding: 1.25em;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2em;
+    margin-left: 0px;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    margin-top: 2.6em;
+}
+
+
+.signupWidget.component input:not(:last-child) {
+    margin: 0 0 1em 0;
+}
+
+#background{
+    background-color: #e9e9e9; 
+    opacity: 0.6; 
+    position: absolute; 
+    top: 0px; 
+    bottom: 0px;
+    right: 0px; 
+    left: 0px; 
+    z-index: 1;
+}
+
+
+
+#signupWidgetForm input{
+    width: 97%;
+    font-size: 1.4em;
+    height: 1.4em;
+    line-height: 1.4em;
+}
+
+.hero-unit .hero-image {
+    left: 0 !important;
+}
+
+@media (max-width: 979px) and (min-width: 768px){
+    #signupWidgetContainer {
+    margin-left: -20px;
+    margin: 0 auto;
+    width: 100%;
+    }
+}
+
+@media (min-width: 1200px){
+#signupWidgetContainer {
+    width: 370px;
+    }
+}
+
+@media (min-width: 1200px){
+    .row-fluid [class*="span"] {
+    float: right;
+    }
+}
+
+
+#signUpButton {
+    font-size: 1.5em;
+    padding: 18px 28px;
+    margin: 0 auto;
+    background-color: #19b55a;
+}
+
+.boldWords{
+    font-weight: 300;
+}
+
+p.description{
+    width: 80%;
+    color: black;
+}
+
+header.header{
+    margin-bottom: 35px;
+}
+
+.features img {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+#googlePlayImg{
+    height: 60px;
+    cursor: pointer;
+}
+
+#googlePlayImg:hover{
+    opacity: 0.8;
+}
+
+.hero-unit .hero-image {
+    background-image: url(assets/img/nexus4_2.png);
+    background-size: 100% 100%;
+}
+
+#hero-carousel {
+    left: 20px;
+    top: 107px;
+    right: 20px;
+    bottom: 0px;
+}
+
+#hero-carousel div.item img{
+    width: 100%;
+    height: 100%;
+}
+
+.navbar a.brand{
+    margin-left: 15px;
+}
+
+span.cardiomoodIcon{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-size: 100% 100%;
+    margin-right: 5px;
+}
+
+</style>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- begins header -->
+		<header class="header">
+			<!-- begins navbar -->
+			<div id="top-nav" class="navbar">
+				<div class="navbar-inner">
+					<div class="container">
+						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</a>					
+						<a class="brand" data-section="body" href="index.html">
+							<img src="assets/img/CardioMood-notext-96x96px.png" alt="Big Thing Logo" />
+							<h1 class="hide">CardioMood - scientific approach to your heart rate</h1>
+						</a>	
+						<nav id="main-menu" class="nav-collapse collapse">
+							<h2 class="hide">Main Navigation</h2>
+							<ul class="nav pull-right">
+								<li><a href="#features-section">FEATURES</a></li>
+								<li><a href="#testimonials-section">TESTIMONIALS</a></li>
+								<li><a href="#call-to-action">DISCOVER NOW</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<!-- ends navbar -->
+
+			<!-- begins hero unit -->
+			<div class="hero-unit">
+				<div class="container">
+				<div class="row-fluid">
+				<div class="span6" style="margin-top: 80px; float: right;" >
+					<h2 class="heading"><img src="assets/img/CardioMood-logo.png" style="height: 85px;" /></h2>
+					
+					<p class="description" style="font-size: 1.5em; margin-bottom: 5px;">Scientific approach to your heart rate</p>
+					<p class="description" style=" font-size: 0.9em; line-height: 1.2em;">We analyze your heart rate to make you be up with your <span class="boldWords">stress</span>, <span>energy</span> and <span>stamina</span> level to help you become healthier </p>
+					    <div id="signupWidgetContainer" class="row" style="padding: 1.25em; position: relative; overflow: hidden; margin-bottom: 2em;">
+					        <div id="background" style=""></div>
+					        <div class="signupWidget component" >
+					            <div id="signupWidgetForm">
+					                <center>
+					                    <input type="text" name="fullName" id="fullNameInput" placeholder="Full Name">
+					                    <input type="email" name="email" id="emailInput" placeholder="Email">
+					                    <input type="password" name="password" id="passwordInput" placeholder="Password">
+					                    <a href="javascript: void(0);" id="signUpButton" class="btn btn-primary" >Get Started</a>
+					                </cetner>
+					            </div>
+					        </div>
+				        </div>
+					
+					
+					<a href="#" class="btn btn-primary" style="display: none;"  ><img src="assets/img/btn-app-store.png" alt="Get App"/></a>
+				</div>
+				<div class="span6 hero-image">
+					<div id="hero-carousel" class="carousel slide">
+						<div class="carousel-inner">
+							<div class="item active">
+								<img src="assets/img/slide-item1.png" alt="BIG Thing App">
+							</div>
+							<div class="item">
+								<img src="assets/img/slide-item1.png" alt="BIG Thing App">
+							</div>
+							
+							
+						</div>
+					</div>
+				</div>
+				</div>
+				</div>				
+			</div>
+
+			<!-- ends hero unit -->
+		</header>
+		
+			
+			
+			
+		<!-- ends header -->
+
+		<!-- begins main content -->
+		<div class="main-content">
+		
+		    <section id="features-section" class="container section features">
+				<div style="margin-bottom: 30px;" >
+			        <h2 style="text-align: center; font-weight: 100; color: black; " class="heading">
+			            Get the app on Google Play
+			        </h2>
+			        <center>
+			            <a href="javascript: void(0);" >
+			                <img id="googlePlayImg" src="assets/img/googlePlay.png" style="" />
+			            </a>
+			        </center>
+			    </div>
+			    
+			    <hr/>
+		    </section>
+		    
+		    <section class="container section features-more">
+				<h2 class="heading">For whom?</h2>
+				<div class="row-fluid">
+					<div class="span4 more-item">
+						<h3 class="heading"><span class="cardiomoodIcon" style="background-image: url('assets/img/surgeon1.png');"></span>Researchers</h3>
+						<div class="description">
+							<p>We have tools for </p>
+							<a href="#" class="learn-more pull-right">Learn More &rarr;</a>
+						</div>
+					</div>
+					
+					<div class="span4 more-item">
+						<h3 class="heading"><span class="cardiomoodIcon" style="background-image: url('assets/img/runner5.png');"></span>Sport</h3>
+						<div class="description">
+							<p>Professional sport trainers and their trainees also can use our technology to improve training process. Our platform is used in international skating center. Trainers monitor the state of sportsmen in realtime.</p>
+							<a href="#" class="learn-more pull-right">Learn More &rarr;</a>
+						</div>
+					</div>
+					
+					<div class="span4 more-item">
+						<h3 class="heading"><span class="cardiomoodIcon" style="background-image: url('assets/img/business56.png');"></span>Personal</h3>
+						<div class="description">
+							<p>You can use this technology in every day life.</p>
+							<a href="#" class="learn-more pull-right">Learn More &rarr;</a>
+						</div>
+					</div>
+
+				</div>				
+			</section>			
+		    
+		
+		
+			<section id="features-section" class="container section features">
+				<div class="row-fluid feature-item">
+					<div class="span6">
+						<img src="assets/img/feature-bootstrap.png" alt="Feature" />
+					</div>
+					<div class="span6 right-text">
+						<h2 class="heading">BASED ON BOOTSTRAP</h2>
+						<p class="description">Following the latest front-end standard and trend. Bootstrap is very powerful and it provides a set of rich features for more customization or future development.</p>
+					</div>
+				</div>
+				<hr />
+				<div class="row-fluid feature-item">
+					<div class="span6">
+						<h2 class="heading">100% FULLY RESPONSIVE</h2>
+						<p class="description">Carefully handcrafted to meet the responsive design across all popular mobile screen sizes. Content is king, so we put a lot of attention to the content accessibilty. Try to resize the browser to see it in action.</p>
+					</div>
+					<div class="span6">
+						<img src="assets/img/feature-responsive.png" class="no-shadow" alt="Feature" />
+					</div>					
+				</div>
+				<hr />
+				<div class="row-fluid feature-item">
+					<div class="span6">
+						<img src="assets/img/feature-easy-customize.png" alt="Feature" />
+					</div>
+					<div class="span6 right-text">
+						<h2 class="heading">EASY TO CUSTOMIZE</h2>
+						<p class="description">Yes, it&#39;s easy to customize the template. Well-written and intuitive code will help you to grasp the structure, elements and style of the page. Moreover, you can check the documentation for detailed guides.</p>
+					</div>
+				</div>				
+			</section>
+
+			<section class="container section features-more">
+				<h2 class="heading">and more...</h2>
+				<div class="row-fluid">
+					<div class="span3 more-item">
+						<h3 class="heading"><i class="icon icon-html5"></i> HTML5 &amp; CSS3</h3>
+						<div class="description">
+							<p>Credibly exploit cutting-edge alignments for parallel experiences. Credibly utilize worldwide leadership through high-payoff deliverables. Progressively network intermandated human capital.</p>
+							<a href="#" class="learn-more pull-right">Learn More &rarr;</a>
+						</div>
+					</div>
+					<div class="span3 more-item">
+						<h3 class="heading"><i class="icon icon-money"></i> Pricing Tables</h3>
+						<div class="description">
+							<p>Synergistically seize front-end information after client-centered results. Dramatically parallel task adaptive testing procedures rather than intermandated ROI. Synergistically leverage.</p>
+							<a href="#" class="learn-more pull-right">Learn More &rarr;</a>
+						</div>
+					</div>
+					<div class="span3 more-item">
+						<h3 class="heading"><i class="icon icon-bar-chart"></i> SEO Optimized</h3>
+						<div class="description">
+							<p>Dynamically embrace goal-oriented core competencies without timely platforms. Appropriately exploit inexpensive sources for customized resources. Authoritatively deliver bleeding-edge portals.</p>
+							<a href="#" class="learn-more pull-right">Learn More &rarr;</a>
+						</div>
+					</div>
+					<div class="span3 more-item">
+						<h3 class="heading"><i class="icon icon-file-alt"></i> Well Documented</h3>
+						<div class="description">
+							<p>Monotonectally negotiate best-of-breed convergence whereas highly efficient networks. Compellingly expedite optimal infomediaries and mission-critical deliverables. Credibly foster cooperative results.</p>
+							<a href="#" class="learn-more pull-right">Learn More &rarr;</a>
+						</div>
+					</div>
+				</div>				
+			</section>			
+			
+			<div class="full-width">
+				<section id="testimonials-section" class="container testimonials flexslider">
+					<h2 class="hide">Testimonial</h2>
+					<ul class="slides">
+						<li>
+							<i class="icon-quote-left icon-4x pull-left"></i>
+							<p class="testimonial-content">Big Thing is just perfect, it allows me to create my version of landing page fast.
+							<span class="author">- Jane Watson, CEO of Fantasy Corp.</span>
+							</p>
+						</li>
+						<li>
+							<i class="icon-quote-left icon-4x pull-left"></i>
+							<p class="testimonial-content">Professional design, clean and modern. Totally recommended!
+							<span class="author">- Mandy, Art Director of Dream Team</span>
+							</p>
+						</li>
+						<li>
+							<i class="icon-quote-left icon-4x pull-left"></i>
+							<p class="testimonial-content">It saves our time, so we can focus on the app development.
+							<span class="author">- Steven, Manager of Lucid</span>
+							</p>
+						</li>
+					</ul>
+				</section>
+			</div>
+
+			<section id="call-to-action" class="container section call-to-action">
+				<div class="row-fluid inner">
+					<div class="span7">
+						<h2 class="heading">Discover Now</h2>
+						<p class="description">We do want you to create a great app, the next big thing. Let the landing page becomes our part, so you can save more time and focus on your app instead. </p>
+						<a href="#" class="btn btn-primary"><img src="assets/img/btn-app-store.png" alt="Get App" /></a>
+					</div>
+					<div class="span5 image-wrapper">
+						<img src="assets/img/call-to-action-iphone.png" class="pull-right" alt="iPhone App" />
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- ends main content -->
+
+		<!-- begins footer -->
+		<section class="full-width newsletter">
+			<div class="container">
+				<div class="row-fluid">
+					<div class="span6">
+						<h3 class="heading">Join Our Newsletter</h3>
+						<p class="description">Stay up to date with the latest news by subscribing to our newsletter.</p>
+					</div>
+					<div class="span6">
+						<div class="alert">
+							<button type="button" class="close">\D7</button>
+							<p></p>
+						</div>
+						<form class="form-inline pull-right">
+							<input type="email" id="email" name="email" placeholder="youremail@domain.com">
+							<input type="button" id="submit" class="btn btn-primary" value="Subscribe Now">
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer class="full-width footer">
+			<div class="container">
+				<div class="row-fluid">
+					<div class="span6 copyright">Copyright 2013 The Develovers. All Rights Reserved.</div>
+					<div class="span6 social">
+						<ul>
+							<li><a href="#"><i class="socicon facebookcircle"></i></a></li>
+							<li><a href="#"><i class="socicon twittercircle"></i></a></li>
+							<li><a href="#"><i class="socicon dribbblecircle"></i></a></li>
+							<li><a href="#"><i class="socicon googlecircle"></i></a></li>
+						</ul>	
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- ends footer -->
+	</div>
+
+	<!-- Javascript
+    ================================================== -->
+	<script src="assets/js/jquery-1.7.2.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.flexslider.js"></script>
+	<script src="assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+	<script src="assets/js/jquery.localscroll-1.2.7-min.js"></script>		
+	<script src="assets/js/big-thing.js"></script>
+</body>
+</html>
