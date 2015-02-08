@@ -17,3 +17,17 @@ function validateEmail(email) {
 function drawPlot(divId, intervals){
     var plot = $.plot('#' + divId, [intervals]);
 }
+
+function showMessage(message){
+    $('#modalMessage').text(message);
+    $('#modal-alert').modal('show');
+}
+
+
+function showWaitingPanel(){
+    $('#waitingPanel').show();
+}
+
+function hideWaitingPanel(){
+    $('#waitingPanel').hide();
+}

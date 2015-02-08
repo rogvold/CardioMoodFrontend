@@ -8,7 +8,7 @@
         <meta name="description" content="Neon Admin Panel" />
         <meta name="author" content="" />
 
-        <title>Занятие</title>
+        <title>CardioMood - личный кабинет</title>
 
         <link rel="stylesheet" href="assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
         <link rel="stylesheet" href="assets/css/font-icons/entypo/css/entypo.css">
@@ -148,6 +148,7 @@
 
 
 
+
                     <!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
                     <div class="sidebar-mobile-menu visible-xs">
                         <a href="#" class="with-animation"><!-- add class "with-animation" to support animation -->
@@ -243,13 +244,22 @@
                     <div class="col-md-6 col-sm-4 clearfix hidden-xs">
 
                         <ul class="list-inline links-list pull-right">
-                            <!--<li>-->
-                            <!--<a href="javascript: void(0);">История</a>-->
-                            <!--</li>-->
+                            <li>
+                                <a href="userSettings.html">Profile Settings</a>
+                            </li>
 
-                            <!--<li class="sep"></li>-->
+                            <li class="sep"></li>
 
-                            <!--<li>-->
+                            <li>
+
+                            <li>
+                                <a href="trainersManagement.html">Experts</a>
+                            </li>
+
+                            <li class="sep"></li>
+
+                            <li>
+
                             <!--<a href="#" data-toggle="chat" data-animate="1" data-collapse-sidebar="1">-->
                             <!--<i class="entypo-chat"></i>-->
                             <!--Сообщения-->
@@ -260,7 +270,8 @@
 
                             <!--<li class="sep"></li>-->
 
-                            <li>
+                            <!--<li>-->
+
                                 <a href="javascript: void(0);" onclick="localStorage.setItem('token', undefined); window.location.href='login.html';" >
                                     Log out <i class="entypo-logout right"></i>
                                 </a>
@@ -447,9 +458,6 @@
 
                     </div>
 
-
-
-
                 </div>
 
 
@@ -500,12 +508,17 @@
         <script src="js/tools.js" type="text/javascript" ></script>
         <script src="js/moment-with-langs.js" type="text/javascript" > </script>
         <script src="js/homeCardioSession.js"></script>
+        <script src="js/cardiomood.login.js"></script>
 
         <script type="text/javascript">
             $(function(){
                 csm = new CardioSessionManager();
                 csm.init();
                 csm.loadSessionList();
+
+                cl = new CardioDataLogin();
+                cl.logoutUri = "login.html";
+                cl.init();
             });
         </script>
 

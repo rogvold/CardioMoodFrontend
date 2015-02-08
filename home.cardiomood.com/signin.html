@@ -1,0 +1,189 @@
+<!doctype html>
+<html class="signup no-js" lang="">
+
+<head>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="description" content="Flat, Clean, Responsive, application admin template built with bootstrap 3">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <!-- /meta -->
+
+    <title>Sign in</title>
+
+    <!-- page level plugin styles -->
+    <!-- /page level plugin styles -->
+
+    <!-- core styles -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- /core styles -->
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="css/skins/palette.css">
+    <link rel="stylesheet" href="css/fonts/font.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+    <!-- template styles -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- load modernizer -->
+    <script src="plugins/modernizr.js"></script>
+    <script src="js/moment.js" ></script>
+    <script src="js/custom/common.js" ></script>
+    <script src="plugins/jquery-1.11.1.min.js" ></script>
+    <script src="js/parse-1.2.18.min.js" ></script>
+    <script src="js/custom/LoginManager.js" ></script>
+
+    <script src="plugins/toastr/toastr.min.js" ></script>
+
+    <link href="img/cLogo.png" rel="shortcut icon" type="image/x-icon" />
+
+    <style>
+        .center-content{
+            background-color: #DCDADA;
+            background-image: url('img/page-bg.png') !important;
+        }
+
+        img.avatar-md{
+            display: block;
+            margin: 0 auto;
+        }
+
+        #loginButton{
+            background-color: #D66C6C !important;
+            border-color: #D66C6C !important;
+            color: white !important;
+        }
+
+        #loginButton:hover{
+            background-color: #B54A4A !important;
+            border-color: #B54A4A !important;
+            color: white !important;
+        }
+
+        .bg-info{
+            background-image: url('img/page-bg.png') !important;
+        }
+
+    </style>
+
+</head>
+
+<body class="bg-info">
+<div class="center-wrapper">
+    <div class="center-content">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+
+                <h4 class="text-center" style="font-size: 30px; margin-bottom: 40px;" >
+                    <img class="avatar-md mr5" src="img/cLogo.png" />
+                    <span style="color: #D66C6C;" >Cardio</span><span style="color: #383A3B;">Mood</span>
+                </h4>
+                <section class="panel bg-white no-b">
+                    <ul class="switcher-dash-action">
+                        <li class="active" ><a href="javascript: void(0);" class="selected">Sign in</a></li>
+                        <li ><a href="signup.html" class="">New account</a></li>
+                    </ul>
+                    <div class="p15">
+                        <div>
+                            <input type="text" class="form-control input-lg mb25" id="email" autofocus="" placeholder="Email">
+                            <input type="password" class="form-control input-lg mb25" id="password" placeholder="Password">
+
+                            <button class="btn btn-primary btn-lg btn-block" id="loginButton" >Sign in</button>
+                        </div>
+                        <div class="text-center">
+                            or
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary btn-lg btn-block btn-facebook" id="facebookSigninButton" >
+                                <i class="ti-facebook" ></i>
+                                Login with Facebook
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <p class="text-center" >
+                    <a style="color: #D66C6C; font-size: 18px; " href="javascript: void(0);" onclick="$('#resetPasswordPlaceholder').show(); $('#resetPasswordEmail').focus();" >
+                        forgot your password?
+                    </a>
+                    <br/>
+
+                <div class="input-group mb15" id="resetPasswordPlaceholder" style="display: none;">
+                    <input id="resetPasswordEmail" class="form-control" style="color: #000000;" placeholder="Enter your email address" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="resetPasswordButton" type="button">reset</button>
+                    </span>
+                </div>
+
+
+                </p>
+                <p class="text-center" style="color: #59595a;" >
+                    Copyright &copy;
+                    <span id="year" class="mr5">2015</span>
+                    <span>CardioMood</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="fb-root"></div>
+
+<script type="text/javascript">
+    (function(d){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document));
+</script>
+
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter27895467 = new Ya.Metrika({id:27895467,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/27895467" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+<script>
+    $(function(){
+        LM = new LoginManager();
+        LM.init();
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Факультеты</title>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" ></script>
+
+    <script src="../js/parse-1.2.18.min.js" type="text/javascript" ></script>
+    <script src="js/avatars.io.js" type="text/javascript" ></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Панель администрирования</a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="departments.html"  >Факультеты</a></li>
+                <li><a href="groups.html" >Группы</a></li>
+                <li><a href="students.html" >Студенты</a></li>
+                <li><a href="trainers.html" >Докторы</a></li>
+                <li><a href="sensors.html" >Сенсоры</a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            <h2 class="sub-header">Факультеты</h2>
+            <div class="table-responsive">
+                <!--<table class="table table-striped" id="departmentsTable" style="display: none;">-->
+
+                <!--</table>-->
+                <ul id="departmentsList" style="list-style: none;">
+                    <li>loading...</li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="form-signin" role="form">
+                <h2 class="form-signin-heading">Новый факультет</h2>
+
+                <input type="text" class="form-control" id="shortName" placeholder="Короткое название (например ФФКЭ)">
+                <br/>
+                <input type="text" class="form-control" id="name" placeholder="Название">
+                <br/>
+                Лого факультета
+                <input type="file" id="avatar" placeholder="символ факультета" />
+                <br/>
+                <span id="logoMessage">logo is not defined</span> <span id="logoUrl"></span>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit" id="createDepartmentButton" >Создать</button>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" >
+
+    function initParse(){
+        var appId = 'KNYnAGgkTVXhSXGzccX33w7ayISaEZBTYd01Qr8X';
+        var jsKey = 'TiXXLbopBebZXO7XHBVdJGNVlXpEVSHhLkmsaLOh';
+        Parse.initialize(appId, jsKey);
+    }
+
+    function initCreateButton(){
+        $('#createDepartmentButton').bind('click', function(){
+            var shortName = $('#shortName').val();
+            var name = $('#name').val();
+            var Department = new Parse.Object.extend('Department');
+            var logoUrl = $('#logoUrl').html().trim();
+
+            var dep = new Department();
+            dep.set('name', name);
+            dep.set('shortName', shortName);
+            if (logoUrl != ""){
+                dep.set('logo', logoUrl);
+            }
+            dep.save().then(function(){
+                window.location.href = window.location.href;
+                return;
+            });
+        });
+    }
+
+    function loadDepartmentsList(){
+        var s = '';
+        var q = new Parse.Query(Parse.Object.extend('Department'));
+        q.find(function(list){
+            for (var i in list){
+                s+= ('<li><img style="height: 20px;" src="' + list[i].get('logo') +'" /> <b>' + list[i].get('shortName') + '</b> <a href="groups.html?depId=' + list[i].id +' " >' + list[i].get('name') + '</a> ' + '</li>');
+            }
+            $('#departmentsList').html(s);
+        });
+    }
+
+    function initAvatarUploader(callback){
+        var client = new AvatarsIO('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwcml2YXRlX3Rva2VuIjoiOGMxZWZkZDlhNGRkYjg3ZmYxYjM4YjJiYzU0MTY0ZDgwYTM0MzIwYmM1YjJmOGY2MzhlMmQzYjMxNzUxMjFlNCJ9.QvQ6XUvHbbBU1iDL33kk-X6-0IEbKshTIF-vLmfp2ns');
+        var uploader = client.create('#avatar'); // selector for input[type="file"] field, here #avatar, for example
+//        uploader.setAllowedExtensions(['png', 'jpg']); // optional, defaults to png, gif, jpg, jpeg
+        uploader.on('complete', function(url){
+            $('#logoUrl').html(url);
+            $('#logoMessage').hide();
+            console.log(url);
+        });
+    }
+
+    $(function(){
+        initParse();
+        initAvatarUploader();
+        initCreateButton();
+        loadDepartmentsList();
+    });
+
+</script>
+
+
+</body>
+</html>

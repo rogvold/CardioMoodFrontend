@@ -1,0 +1,374 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="description" content="Flat, Clean, Responsive, application admin template built with bootstrap 3">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <!-- /meta -->
+
+    <title>
+        Users groups
+    </title>
+
+    <!-- core scripts -->
+    <script src="plugins/jquery-1.11.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="plugins/jquery.slimscroll.min.js"></script>
+    <script src="plugins/jquery.easing.min.js"></script>
+    <script src="plugins/appear/jquery.appear.js"></script>
+    <script src="plugins/jquery.placeholder.js"></script>
+    <script src="plugins/fastclick.js"></script>
+    <!-- /core scripts -->
+
+    <!-- page level plugin styles -->
+    <!-- /page level plugin styles -->
+
+    <!-- core styles -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+    <!-- /core styles -->
+
+    <script src="js/parse-1.2.18.min.js" ></script>
+    <script src="plugins/toastr/toastr.min.js" ></script>
+    <script src="js/moment.js" ></script>
+    <script src="js/custom/common.js" ></script>
+    <script src="js/custom/CurrentUserManager.js" ></script>
+    <script src="js/custom/DoctorNotificationManager.js" ></script>
+    <script src="js/custom/DoctorDashboardManager.js" ></script>
+
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="css/skins/palette.css">
+    <link rel="stylesheet" href="css/fonts/font.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- template styles -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- load modernizer -->
+    <script src="plugins/modernizr.js"></script>
+
+
+    <link href="img/cLogo.png" rel="shortcut icon" type="image/x-icon" />
+
+
+    <style>
+        .deleteUserItem{
+            color: red;
+        }
+
+        .editGroupLink{
+            cursor: pointer;
+        }
+
+        #notificationsList{
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .user-name{
+            font-weight: bold;
+        }
+        i.notificationCheck{
+            cursor: pointer;
+        }
+
+        .user-email{
+            font-size: 10px;
+            color: #1582dc;
+        }
+
+
+
+    </style>
+
+</head>
+
+<!-- body -->
+
+<body>
+
+
+    <div class="cover" style="background-image: url(img/cover1.jpg)"></div>
+    <div class="overlay bg-color"></div>
+
+    <div class="app horizontal-layout boxed">
+        <!-- top header -->
+        <header class="header header-fixed navbar">
+
+            <div class="brand">
+                <!--&lt;!&ndash; toggle offscreen menu &ndash;&gt;-->
+                <!--<a href="javascript:;" class="ti-menu off-left visible-xs" data-toggle="offscreen" data-move="ltr"></a>-->
+                <!--&lt;!&ndash; /toggle offscreen menu &ndash;&gt;-->
+
+                <!-- logo -->
+                <a href="index.html" class="navbar-brand">
+                    <img src="img/cLogo.png" alt="">
+                    <span class="heading-font">
+                        CardioMood
+                    </span>
+                </a>
+                <!-- /logo -->
+            </div>
+
+            <ul class="nav navbar-nav">
+                <li class="hidden-xs">
+                    <!-- toggle small menu -->
+                    <!--<a href="javascript:;" class="toggle-sidebar">-->
+                        <!--<i class="ti-menu"></i>-->
+                    <!--</a>-->
+                    <!-- /toggle small menu -->
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="">
+                    <a href="javascript:void(0);" data-toggle="modal" data-target="#newGroupModal">
+                        <i class="ti-plus"></i>
+                    </a>
+                </li>
+
+                <li>
+
+                </li>
+
+                <li class="notifications dropdown">
+                    <a href="javascript:;" data-toggle="dropdown">
+                        <i class="ti-bell"></i>
+                        <div class="badge badge-top bg-danger animated flash" id="notificationCircle" >
+                            <span id="notificationsNumber"></span>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu animated fadeInLeft">
+                        <div class="panel panel-default no-m">
+                            <div class="panel-heading small"><b>Notifications</b>
+                            </div>
+                            <ul class="list-group" id="notificationsList" >
+                                <li class="list-group-item">
+                                    <a href="javascript:;">
+                                        <span class="pull-left mt5 mr15">
+                                            <img src="img/faceless.jpg" class="avatar avatar-sm img-circle" alt="">
+                                        </span>
+                                        <div class="m-body">
+                                            <div class="">
+                                                <small><b>CRYSTAL BROWN</b></small>
+                                                <span class="label label-danger pull-right">ASSIGN AGENT</span>
+                                            </div>
+                                            <span>Opened a support query</span>
+                                            <span class="time small">2 mins ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="javascript:;">
+                                        <div class="pull-left mt5 mr15">
+                                            <div class="circle-icon bg-danger">
+                                                <i class="ti-download"></i>
+                                            </div>
+                                        </div>
+                                        <div class="m-body">
+                                            <span>Upload Progress</span>
+                                            <div class="progress progress-xs mt5 mb5">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                                </div>
+                                            </div>
+                                            <span class="time small">Submited 23 mins ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="javascript:;">
+                                        <span class="pull-left mt5 mr15">
+                                            <img src="img/faceless.jpg" class="avatar avatar-sm img-circle" alt="">
+                                        </span>
+                                        <div class="m-body">
+                                            <em>Status Update:</em>
+                                            <span>All servers now online</span>
+                                            <span class="time small">5 days ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!--<div class="panel-footer">-->
+                                <!--<a href="javascript:;">See all notifications</a>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="off-right">
+                    <a href="javascript:;" data-toggle="dropdown">
+                        <!--<img src="img/faceless.jpg" class="header-avatar img-circle" alt="user" title="user">-->
+                        <span class="ml10 username"  >UserName</span>
+                        <i class="ti-angle-down ti-caret hidden-xs"></i>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight">
+
+                        <li>
+                            <a href="profile.html" >Profile</a>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="logoutLink" >Logout</a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </header>
+        <!-- /top header -->
+
+        <section class="layout">
+            <!-- sidebar menu -->
+            <!--<aside class="sidebar offscreen-left">-->
+                <!--&lt;!&ndash; main navigation &ndash;&gt;-->
+                <!--<nav class="main-navigation" data-height="auto" data-size="6px" data-distance="0" data-rail-visible="true" data-wheel-step="10">-->
+                    <!--<p class="nav-title">MENU</p>-->
+                    <!--<ul class="nav">-->
+                        <!--&lt;!&ndash; dashboard &ndash;&gt;-->
+                        <!--<li>-->
+                            <!--<a href="javascript: void(0);">-->
+                                <!--<i class="ti-home"></i>-->
+                                <!--<span>Students</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+
+                    <!--</ul>-->
+
+                <!--</nav>-->
+            <!--</aside>-->
+            <!-- /sidebar menu -->
+
+            <!-- main content -->
+            <section class="main-content">
+
+                <!-- content wrapper -->
+                <div class="content-wrap">
+
+                    <!-- inner content wrapper -->
+                    <div class="wrapper no-p">
+
+                        <div class="wrapper" id="groupsList"  >
+
+
+                        </div>
+
+                    </div>
+                    <!-- /inner content wrapper -->
+
+                </div>
+                <!-- /content wrapper -->
+                <a class="exit-offscreen"></a>
+            </section>
+            <!-- /main content -->
+        </section>
+
+    </div>
+
+
+    <div class="gallery-loader hide">
+        <div class="loader"></div>
+    </div>
+
+    <div class="modal fade" id="newGroupModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Create user group</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <input class="form-control" id="createName" placeholder="Group name...">
+                        <textarea class="form-control mt10" id="createDescription" placeholder="Description"></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+                    <button type="button" class="btn btn-primary" id="createButton">CREATE</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="usersModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="usersModalName" ></h4>
+                </div>
+                <div class="modal-body">
+                    <ul id="usersModalList">
+
+                    </ul>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="groupSettingsModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="selectedGroupName" ></h4>
+                </div>
+                <div class="modal-body">
+                    <input class="form-control" id="selectedGroupNameInput" />
+                    <br/>
+                    <input class="form-control" id="selectedGroupDescriptionInput" />
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="updateSelectedGroupButton" >SAVE</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- page level scripts -->
+    <!-- /page level scripts -->
+
+    <!-- template scripts -->
+    <script src="js/offscreen.js"></script>
+    <script src="js/main.js"></script>
+    <!-- /template scripts -->
+
+    <!-- page script -->
+    <!-- /page script -->
+
+    <script>
+        $(function(){
+            DDM = new DoctorDashboardManager();
+            DDM.init();
+        });
+    </script>
+
+</body>
+<!-- /body -->
+
+</html>

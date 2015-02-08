@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Студент</title>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" ></script>
+
+    <script src="../js/parse-1.2.18.min.js" type="text/javascript" ></script>
+    <script src="js/avatars.io.js" type="text/javascript" ></script>
+    <script src="../js/common.js" type="text/javascript" ></script>
+    <script src="js/StudentManager.js" type="text/javascript" ></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top non-printable" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Панель администрирования</a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="departments.html"  >Факультеты</a></li>
+                <li ><a href="groups.html" >Группы</a></li>
+                <li><a href="students.html" >Студенты</a></li>
+                <li><a href="doctors.html" >Докторы</a></li>
+                <li><a href="sensors.html" >Сенсоры</a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div id="userInfoBlock">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <div class="thumbnail"  >
+                            <img id="userAvatarImg" src="http://s3.amazonaws.com/cdn.getchute.com/v1/images/avatars.io/avatar-256.png"  alt="...">
+                            <div class="caption">
+                                <h4 class="userName" ></h4>
+                                <h4 class="depInfo" ></h4>
+                                <ul class="contacts">
+                                    <li><span class="glyphicon glyphicon-envelope"></span><span class="userEmail" >email</span></li>
+                                    <li><span class="glyphicon glyphicon-earphone"></span><span class="userPhone" >phone</span></li>
+                                    <li><span class="glyphicon glyphicon-qrcode"></span><span ><a href="javascript:void(0);" onclick="printContent('QR_card_placeholder')" >печать QR-кода</a></span></li>
+                                </ul>
+                                <!--<p>...</p>-->
+                                <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
+                            <!---->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-9">
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+<div id="QR_card_placeholder" class="printable" style=" float: right; display: none;" >
+
+</div>
+
+<script type="text/javascript" >
+
+
+    $(function(){
+        SM = new StudentManager();
+        SM.init();
+    });
+
+
+
+</script>
+
+
+</body>
+</html>

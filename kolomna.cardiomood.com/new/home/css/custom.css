@@ -1,0 +1,79 @@
+.studentAvatar{
+    cursor: pointer;
+}
+
+.studentAvatar:hover{
+    opacity: 0.6;
+}
+
+.user-meta li {
+     padding: 0px 0 !important;
+}
+
+a.logoutLink{
+    font-size: 16px !important;
+    padding: 16px 20px !important;
+}
+
+a.dropdownLink{
+    font-size: 16px !important;
+    padding: 16px 20px !important;
+}
+
+
+#sessionsListContainer{
+    max-height: 700px;
+    overflow-y: auto;
+}
+
+.updatingTimeAgo{
+    font-size: 10px;
+    font-style: italic;
+    color: darkgray;
+}
+
+.traineePanel{
+    cursor: pointer;
+}
+
+.sessionItem{
+    cursor: pointer;
+}
+
+.sessionItem:hover{
+    background-color: lightgoldenrodyellow;
+}
+
+.sessionItem.selected{
+    background-color: lightgreen;
+}
+
+.realtime .updatedTime{
+    color: #808080;
+    background-color: floralwhite;
+    font-style: italic;
+    display: inline-block;
+    text-align: center;
+    width: 50px;
+}
+
+.realtime{
+    cursor: pointer;
+}
+
+.realtime:hover{
+    background-color: lightcoral;
+    opacity: 0.7;
+}
+
+.realtime.selected{
+    background-color: lightcoral;
+}
+
+#HeartRateDiv, #StressDiv, #SDNNDiv{
+    width: 98%;
+    height: 150px;
+    /*background-color: #1582dc;*/
+    opacity: 1;
+    margin: 10px;
+}

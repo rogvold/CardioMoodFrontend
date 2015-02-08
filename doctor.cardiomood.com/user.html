@@ -1,0 +1,625 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="description" content="Flat, Clean, Responsive, application admin template built with bootstrap 3">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <!-- /meta -->
+
+    <title>
+        User
+    </title>
+
+    <!-- core scripts -->
+    <script src="plugins/jquery-1.11.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="plugins/jquery.slimscroll.min.js"></script>
+    <script src="plugins/jquery.easing.min.js"></script>
+    <script src="plugins/appear/jquery.appear.js"></script>
+    <script src="plugins/jquery.placeholder.js"></script>
+    <script src="plugins/fastclick.js"></script>
+    <!-- /core scripts -->
+
+    <!-- page level plugin styles -->
+    <!-- /page level plugin styles -->
+
+    <!-- core styles -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+    <!-- /core styles -->
+
+    <script src="js/parse-1.2.18.min.js" ></script>
+    <script src="plugins/toastr/toastr.min.js" ></script>
+    <script src="js/moment.js" ></script>
+    <script src="js/custom/common.js" ></script>
+
+
+    <script src="js/custom/charts/jquery.flot.min.js"></script>
+    <script src="js/custom/charts/jquery.flot.selection.min.js"></script>
+    <script src="js/custom/charts/jquery.flot.time.min.js"></script>
+    <script src="js/custom/charts/LineChart.js"></script>
+    <script src="js/custom/charts/ScatterChart.js"></script>
+    <script src="js/custom/charts/BarChart.js"></script>
+    <script src="js/custom/DoctorUserCalculationManager.js"></script>
+
+    <script src="js/custom/charts/CmChartManager.js"></script>
+
+
+    <script src="js/custom/SessionCommentsManager.js" ></script>
+    <script src="js/custom/CurrentUserManager.js" ></script>
+    <script src="js/custom/ExcelManager.js" ></script>
+    <script src="js/custom/DoctorUserManager.js" ></script>
+
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="css/skins/palette.css">
+    <link rel="stylesheet" href="css/fonts/font.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- template styles -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- load modernizer -->
+    <script src="plugins/modernizr.js"></script>
+
+
+    <link href="img/cLogo.png" rel="shortcut icon" type="image/x-icon" />
+
+    <style>
+        #filterButton, #undoFilterButton{
+            cursor: pointer;
+        }
+
+        #filterButton:hover, #undoFilterButton:hover{
+            opacity: 0.7;
+        }
+
+
+
+    </style>
+
+</head>
+
+<!-- body -->
+
+<body>
+
+
+<div class="cover" style="background-image: url(img/cover1.jpg)"></div>
+<div class="overlay bg-color"></div>
+
+<div class="app horizontal-layout boxed">
+    <!-- top header -->
+    <header class="header header-fixed navbar non-printable">
+
+        <div class="brand">
+            <!-- toggle offscreen menu -->
+            <a href="javascript:;" class="ti-menu off-left visible-xs" data-toggle="offscreen" data-move="ltr"></a>
+            <!-- /toggle offscreen menu -->
+
+            <!-- logo -->
+            <a href="index.html" class="navbar-brand">
+                <img src="img/cLogo.png" alt="">
+                    <span class="heading-font">
+                        CardioMood
+                    </span>
+            </a>
+            <!-- /logo -->
+        </div>
+
+        <ul class="nav navbar-nav">
+            <li class="hidden-xs">
+                <!-- toggle small menu -->
+                <!--<a href="javascript:;" class="toggle-sidebar">-->
+                <!--<i class="ti-menu"></i>-->
+                <!--</a>-->
+                <!-- /toggle small menu -->
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+
+            <li class="off-right">
+                <a href="javascript:;" data-toggle="dropdown">
+                    <!--<img src="img/faceless.jpg" class="header-avatar img-circle" alt="user" title="user">-->
+                    <span class="hidden-xs ml10 username"  >UserName</span>
+                    <i class="ti-angle-down ti-caret hidden-xs"></i>
+                </a>
+                <ul class="dropdown-menu animated fadeInRight">
+
+                    <li>
+                        <a href="javascript: void(0);" >Profile</a>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="logoutLink" >Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <!-- /top header -->
+
+    <section class="layout">
+
+
+        <!-- main content -->
+        <section class="main-content">
+
+            <!-- content wrapper -->
+            <div class="content-wrap">
+
+                <!-- inner content wrapper -->
+                <div class="wrapper no-p">
+
+                    <div class="col-md-12 mt10">
+                        <div class="col-md-3 non-printable"  >
+
+                            <div class="panel overflow-hidden no-b profile panel panel-primary no-b">
+                                <div class="panel mt10">
+                                    <a href="javascript:;" class="show text-center">
+                                        <img src="" class=" userAvatar avatar-lg img-circle" alt="">
+                                    </a>
+
+                                    <div class="show mt15 text-center">
+                                        <div class="h5">
+                                            <b><span class="studentName userUsername"></span></b>
+                                        </div>
+                                        <ul class="user-meta text-left pl15" id="userInfoList">
+
+                                        </ul>
+
+                                        <p class="show text-muted">
+                                            <small id="lastOnline">
+
+                                            </small>
+                                        </p>
+                                        <ul class="user-meta">
+                                            <!--<li><i class="ti-email mr5"></i><span class="studentEmail">udalov@test.ru</span></li>-->
+                                        </ul>
+                                        <p></p>
+                                    </div>
+
+                                    <div class="list-group" id="sessionsList">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-9 printable">
+                            <section class="panel" style="min-height: 70px;" >
+                                <div class="panel-body">
+                                    <div class="selectedSessionName">
+
+                                    </div>
+                                </div>
+                                <div class="panel-footer ">
+                                        <span class="selectedSessionTimestamp">
+
+                                        </span>
+                                        <span class="pull-right">
+                                            <i class="ti-settings sessionSettings ml5 mr5" ></i>
+                                            <i class="ti-printer ml5 mr5" style="cursor: pointer;" onclick="window.print()" ></i>
+                                            <i class="ti-export ml5 mr5" style="cursor: pointer;" data-toggle="modal" data-target="#sessionExportModal"  ></i>
+                                        </span>
+
+                                </div>
+                            </section>
+
+                            <section class="panel">
+                                <div class="panel-heading non-printable">
+                                    Charts
+                                    <i class="ti-back-left pull-right hide" id="undoFilterButton" title="undo" ></i>
+                                    <i class="ti-filter pull-right" id="filterButton" title="filter" ></i>
+
+                                </div>
+                                <div class="panel-body chartsPlaceholder ">
+
+                                    <div class="col-md-12" style="padding-left: 0px;">
+
+                                        <div class="" style="padding-left: 0px;">
+                                            <!-- Example row of columns -->
+                                            <div class="row">
+                                                <div class="col-md-12" >
+                                                    <h4>RR chart</h4>
+                                                    <div style="position: relative;" >
+                                                        <div id="RR_main_plot"></div>
+
+                                                        <div id="main_overlay" style="" ></div>
+
+                                                    </div>
+
+                                                    <div id="RR_main_plot_controls_block" class="non-printable" >
+                                                        <span>Window:</span>
+                                    <span class="radios" >
+                                        <input type="radio" id="2_min_radio" data-min="2" value="2" class="windowRadio" checked="true" /> <label for="2_min_radio">2 min.</label>
+                                        <input type="radio" id="5_min_radio" value="5" data-min="5" class="windowRadio" /> <label for="5_min_radio">5 min.</label>
+                                        <input type="radio" id="10_min_radio" value="10" data-min="10" class="windowRadio" /> <label for="10_min_radio">10 min.</label>
+                                    </span>
+
+                                                        <span class="non-printable" style="margin-left: 30px;">Step:</span>
+                                    <span class="radios non-printable" >
+                                        <input type="radio" id="10_sec_radio" data-sec="2" value="2" class="stepRadio" checked="true" /> <label for="10_sec_radio">10 sec.</label>
+                                        <input type="radio" id="30_sec_radio" value="5" data-sec="30" class="stepRadio" /> <label for="30_sec_radio">30 sec.</label>
+                                        <input type="radio" id="60_sec_radio" value="10" data-sec="60" class="stepRadio" /> <label for="60_sec_radio">60 sec.</label>
+                                        <input type="radio" id="600_sec_radio" value="10" data-sec="600" class="stepRadio" /> <label for="600_sec_radio">10 min.</label>
+                                        <input type="radio" id="1800_sec_radio" value="10" data-sec="1800" class="stepRadio" /> <label for="1800_sec_radio">30 min.</label>
+
+
+                                    </span>
+
+                                    <span class="controls non-printable">
+
+                                        <span class="buttons_block">
+                                            Move window:
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-default" id="leftButton"><span  class="glyphicon glyphicon-chevron-left  "></span></button>
+                                                <button type="button" class="btn btn-sm btn-default" id="rightButton" ><span  class="glyphicon glyphicon-chevron-right"></span></button>
+                                            </div>
+                                        </span>
+                                    </span>
+                                                    </div>
+                                                    <!--<p><a class="btn btn-default" href="#" role="button">View details »</a></p>-->
+                                                </div>
+                                                <div class="col-md-1" style="display: none;">
+                                                    <h4>RR data</h4>
+
+                                                    <textarea id="RR_data_textarea" class="" ></textarea>
+                                                    <!--<p><a class="btn btn-default" href="#" role="button">View details »</a></p>-->
+                                                </div>
+                                            </div>
+
+                                            <!--<hr style="margin-top: 7px; margin-bottom: 7px;" />-->
+                                            <div class="row non-printable">
+                                                <div class="col-md-2 col-md-offset-7">
+                                                    <a onclick="$('.hiddenable').show(); $(this).hide(); $('.hideLink').show();" class="toggleLink showLink" href="javascript: void(0);" >show</a> /
+                                                    <a onclick="$('.hiddenable').hide(); $(this).hide(); $('.showLink').show();"  class="toggleLink hideLink" href="javascript: void(0);" >hide</a> blocks
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6">
+                                                    <h4 class="paramsHeader non-printable" onclick="$('#RR_selected_plot').toggle('slow')">RR selected chart</h4>
+
+                                                    <div id="RR_selected_plot" class="hiddenable">
+
+                                                    </div>
+                                                    <p>
+                                                        <!--Selected RR plot-->
+                                                    </p>
+                                                    <!--<p><a class="btn btn-default" href="#" role="button">View details »</a></p>-->
+                                                </div>
+
+                                                <div class="col-md-6 col-sm-6">
+                                                    <h4 class="paramsHeader"  onclick="$('#histogram').toggle('fast')">Histogram</h4>
+
+                                                    <div id="histogram" class="hiddenable">
+
+                                                    </div>
+                                                    <p>
+                                                        <!--Histogram-->
+                                                    </p>
+                                                    <!--<p><a class="btn btn-default" href="#" role="button">View details »</a></p>-->
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+
+                                                <div class="col-md-6 col-sm-6 ">
+                                                    <h4 class="paramsHeader"  onclick="$('#RR_scatter_plot').toggle('fast')" style="">Scatter plot</h4>
+                                                    <div id="RR_scatter_plot" class="hiddenable">
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <div class="col-md-6 col-sm-12">
+                                                    <h4 class="paramsHeader" onclick="$('#params_block').toggle('fast')">Params block</h4>
+
+                                                    <div id="params_block" class="hiddenable">
+                                                        <div class="col-md-6 col-sm-5">
+
+                                                            <span class="paramName" >rrs number</span> <span id="selectedNumber" class="paramsVal" data-floor="1" ></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="artifactsCount">artif. count</span> <span class="paramsVal" data-floor="2" data-name="artifactsCount"></span>
+                                                            <br/>
+                                                            <br/>
+
+                                                            <span class="paramName" data-name="mRR">mRR</span> <span class="paramsVal" data-floor="2" data-name="mRR"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="SDNN">SDNN</span> <span class="paramsVal" data-floor="2"  data-name="SDNN"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="RMSSD">RMSSD</span> <span class="paramsVal" data-floor="2"  data-name="RMSSD"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="pNN50">pNN50</span> <span class="paramsVal" data-floor="2"  data-name="pNN50"></span>
+                                                            <br/>
+                                                            <br/>
+
+                                                            <span class="paramName" data-name="TP">TP</span> <span class="paramsVal" data-floor="2"  data-name="TP"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="ln_TP">ln(TP)</span> <span class="paramsVal" data-floor="2"  data-name="ln_TP"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="VLF">VLF</span> <span class="paramsVal" data-floor="2"  data-name="VLF"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="VLF_percent">VLF%</span> <span class="paramsVal" data-floor="2"  data-name="VLF_percent"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="ln_VLF">ln(VLF)</span> <span class="paramsVal" data-floor="2"  data-name="ln_VLF"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="LF">LF</span> <span class="paramsVal" data-floor="2"  data-name="LF"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="LF_percent">LF%</span> <span class="paramsVal" data-floor="2"  data-name="LF_percent"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="ln_LF">ln(lF)</span> <span class="paramsVal" data-floor="2"  data-name="ln_LF"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="HF">HF</span> <span class="paramsVal" data-floor="2"  data-name="HF"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="HF_percent">HF%</span> <span class="paramsVal" data-floor="2"  data-name="HF_percent"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="ln_HF">ln(HF)</span> <span class="paramsVal" data-floor="2"  data-name="ln_HF"></span>
+
+                                                        </div>
+
+                                                        <div class="col-md-6 col-sm-5">
+                                                            <span style="margin-top: 31px;"  class="paramName" data-name="LF_over_HF">LF/HF</span> <span class="paramsVal" data-floor="4"  data-name="LF_over_HF"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="LF_norm">LF norm</span> <span class="paramsVal" data-floor="2"  data-name="LF_norm"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="HF_norm">HF norm</span> <span class="paramsVal" data-floor="2"  data-name="HF_norm"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="VLF_over_HF">VLF/HF</span> <span class="paramsVal" data-floor="4"  data-name="VLF_over_HF"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="IC">IC</span> <span class="paramsVal" data-floor="4"  data-name="IC"></span>
+                                                            <br/>
+                                                            <br/>
+
+                                                            <span class="paramName" data-name="Mo">Mo</span> <span class="paramsVal" data-floor="2"  data-name="Mo"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="Amo">Amo</span> <span class="paramsVal" data-floor="2"  data-name="Amo"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="SI">SI</span> <span class="paramsVal" data-floor="2"  data-name="SI"></span>
+                                                            <br/>
+                                                            <br/>
+
+
+                                                            <span class="paramName" data-name="MxDMn">MxDMn</span> <span class="paramsVal" data-floor="2"  data-name="MxDMn"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="WN5">WN5</span> <span class="paramsVal" data-floor="2"  data-name="WN5"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="WN4">WN4</span> <span class="paramsVal" data-floor="2"  data-name="WN4"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="WN1">WN1</span> <span class="paramsVal" data-floor="2"  data-name="WN1"></span>
+                                                            <br/>
+                                                            <span class="paramName" data-name="HRVTi">HRVTi</span> <span class="paramsVal" data-floor="2"  data-name="HRVTi"></span>
+                                                            <br/>
+                                                        </div>
+                                                        <div class="col-sm-12">
+
+                                                        </div>
+
+                                                    </div>
+
+
+
+                                                    <p>
+                                                        <!--Params block-->
+                                                    </p>
+                                                    <!--<p><a class="btn btn-default" href="#" role="button">View details »</a></p>-->
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-1" style="display: none;" >
+                                                <h4>Selected</h4>
+                                                <textarea id="selected_data_textarea" class="" ></textarea>
+                                                <!--<p><a class="btn btn-default" href="#" role="button">View details »</a></p>-->
+                                            </div>
+
+                                            <!--<hr/>-->
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h4 class="paramsHeader" onclick="$('#RR_spectrum_plot').toggle('slow')">Spectrum chart</h4>
+
+                                                    <div id="RR_spectrum_plot" class="hiddenable">
+
+                                                    </div>
+                                                    <p>
+                                                        <!--Selected RR plot-->
+                                                    </p>
+                                                    <!--<p><a class="btn btn-default" href="#" role="button">View details »</a></p>-->
+                                                </div>
+
+                                            </div>
+
+
+
+
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h4 class="paramsHeader" onclick="$('#stress_plot').toggle('slow')" >Stress index</h4>
+                                                    <div id="stress_plot" class="hiddenable" >
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <hr/>
+
+                                            <div id="generatingBlock" style="margin-top: 10px; margin-bottom: 10px;" >
+                                                <button id="generateReportButton" disabled="true" >generate report</button>
+                                                <div id="generateReportMessageId" style="display: none;" >
+                                                    Please wait... It can take up to several minutes
+                                                </div>
+
+                                                <div id="generatingButtonsBlock" style="display: none;">
+                                                    <a href="javascript: void(0);" class="reportLink" data-window="120000" id="report_link_120000" >report - 2 min. window</a>
+                                                    <br/>
+                                                    <a href="javascript: void(0);" class="reportLink" data-window="300000" id="report_link_300000" >report - 5 min. window</a>
+                                                    <br/>
+                                                    <a href="javascript: void(0);" class="reportLink" data-window="600000" id="report_link_600000" >report - 10 min. window</a>
+                                                </div>
+
+                                            </div>
+
+
+
+
+                                            <div class="row non-printable">
+                                                <div class="col-md-12">
+                                                    <section class="panel panel-default  post-comments">
+
+                                                        <div class="panel-heading">
+                                                            Comments
+                                                        </div>
+
+                                                        <div id="commentsBlock">
+                                                            <div class="media p15">
+                                                                <div class="media">
+                                                                    <a class="pull-left" href="javascript:;">
+                                                                        <img class="media-object avatar avatar-sm userAvatar" src="img/faceless.jpg" alt="">
+                                                                    </a>
+                                                                    <div class="comment">
+                                                                        <div class="comment-author h6 no-m">
+                                                                            <a href="javascript:;"><b><span class="userName">Admin</span></b></a>
+                                                                        </div>
+                                                                        <div class="comment-meta small"></div>
+                                                                        <p class="commentText" >
+                                                                            You can leave a comment
+                                                                        </p>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="panel-footer">
+                                                            <div role="form" class="form-horizontal">
+                                                                <div class="form-group no-m">
+                                                                    <div class="input-group">
+                                                                        <input type="text" id="commentMessage" class="form-control input-sm no-border" placeholder="Leave your message">
+                                                    <span class="input-group-btn">
+                                                    <button class="btn btn-default btn-sm" id="submitCommentButton" type="button">Submit</button>
+                                                </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+
+                                            <!--<footer>-->
+                                            <!--<p>© CardioMood 2014</p>-->
+                                            <!--</footer>-->
+                                        </div>
+
+                                    </div>
+
+
+
+
+                                </div>
+
+                            </section>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /inner content wrapper -->
+
+            </div>
+            <!-- /content wrapper -->
+            <a class="exit-offscreen"></a>
+        </section>
+        <!-- /main content -->
+    </section>
+
+</div>
+
+
+<div class="gallery-loader hide">
+    <div class="loader"></div>
+</div>
+
+
+
+<div class="modal fade" id="sessionSettingsModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" >Session settings</h4>
+            </div>
+            <div class="modal-body">
+                <input id="updateSessionName" class="form-control mb10" />
+                <textarea class="form-control" id="updateSessionDescription" ></textarea>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="updateSessionButton" >UPDATE</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="sessionExportModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" >RR-intervals</h4>
+            </div>
+            <div class="modal-body">
+                <textarea id="rrsTextarea" class="form-control" style="height: 400px;" ></textarea>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="excelExportButton" class="btn btn-success" >EXPORT TO EXCEL</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- page level scripts -->
+<!-- /page level scripts -->
+
+<!-- template scripts -->
+<script src="js/offscreen.js"></script>
+<script src="js/main.js"></script>
+<!-- /template scripts -->
+
+<!-- page script -->
+<!-- /page script -->
+
+<script>
+    $(function(){
+        DUM = new DoctorUserManager();
+        DUM.init();
+    });
+</script>
+
+</body>
+<!-- /body -->
+
+</html>

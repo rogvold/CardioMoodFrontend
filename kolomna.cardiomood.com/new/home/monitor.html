@@ -1,0 +1,264 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="description" content="Flat, Clean, Responsive, application admin template built with bootstrap 3">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <!-- /meta -->
+
+    <title>Мониторинг</title>
+
+    <!-- page level plugin styles -->
+    <!-- /page level plugin styles -->
+
+    <!-- core styles -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- /core styles -->
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="css/skins/palette.css">
+    <link rel="stylesheet" href="css/fonts/font.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+    <!-- template styles -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- load modernizer -->
+    <script src="plugins/modernizr.js"></script>
+
+    <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+
+</head>
+
+<!-- body -->
+
+<body>
+
+
+<!--<div class="cover" style="background-image: url(img/cover1.jpg)"></div>-->
+<!--<div class="overlay bg-color"></div>-->
+
+<div class="app horizontal-layout  " id="monitoringLayout" >
+    <!-- top header -->
+    <header class="header header-fixed navbar">
+
+        <div class="brand">
+            <!-- toggle offscreen menu -->
+            <a href="javascript:;" class="ti-menu off-left visible-xs" data-toggle="offscreen" data-move="ltr"></a>
+            <!-- /toggle offscreen menu -->
+
+            <!-- logo -->
+            <a href="index.html" class="navbar-brand">
+                <img src="img/cmLogo.png" alt="">
+                    <span class="heading-font">
+                        CardioMood <sup>Sport</sup>
+                    </span>
+            </a>
+            <!-- /logo -->
+        </div>
+
+        <!--<ul class="nav navbar-nav">-->
+
+            <!--<li class="hidden-xs ">-->
+                <!--<a href="monitoring.html" class="">-->
+                    <!--<i class="ti-target"></i>-->
+                    <!--Мониторинг-->
+                <!--</a>-->
+            <!--</li>-->
+
+            <!--<li class="hidden-xs ">-->
+                <!--<a href="index.html" class="">-->
+                    <!--<i class="ti-user"></i>-->
+                    <!--Спортсмены-->
+                <!--</a>-->
+            <!--</li>-->
+
+
+            <!--</li>-->
+        <!--</ul>-->
+
+        <ul class="nav navbar-nav navbar-right">
+
+            <li>
+                <a href="monitoring.html" >
+                    <i class="ti-target animated flash"></i>
+                    Мониторинг
+                </a>
+            </li>
+            <li>
+                <a href="index.html" >
+                    <i class="ti-user animated flash"></i>
+                    Спортсмены
+                </a>
+            </li>
+
+            <li class="off-right">
+                <a href="javascript:;" data-toggle="dropdown">
+                    <img src="img/faceless.jpg" class="header-avatar img-circle" alt="user" title="user">
+                    <span class="hidden-xs ml10 username"  >UserName</span>
+                    <i class="ti-angle-down ti-caret hidden-xs"></i>
+                </a>
+                <ul class="dropdown-menu animated fadeInRight">
+                    <li>
+                        <a href="javascript: void(0);" class="logoutLink" >Выход</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </header>
+    <!-- /top header -->
+
+    <section class="layout monitoringLayout" >
+
+        <!-- chat panel -->
+        <aside class="sidebar-300 offscreen-right bg-white" style="">
+            <div class="content-wrap">
+                <div class="wrapper">
+                    <div class="slimscroll" data-height="auto" data-size="6px" data-distance="0">
+
+
+
+                        <div class="" id="sessionsPanel" >
+                            <div class="p10 bb bolder text-capitalize">
+                                <span class="currentSportsmanName"></span>
+                                <br/>
+                            </div>
+                            <ul class="list-style-none p0 " id="sessionsList" >
+                                <li class="p10 bb active realtime">
+                                    <span class="pull-right updatedTime"></span>
+
+                                    <a href="javascript: void(0)" >
+                                        Real-Time
+                                    </a>
+                                </li>
+                                <li class="p10 bb ">
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+        <!-- /chat panel -->
+
+        <!-- main content -->
+        <section class="main-content">
+
+            <!-- content wrapper -->
+            <div class="content-wrap">
+
+                <!-- inner content wrapper -->
+                <div class="wrapper no-p">
+
+                    <div class="wrapper p0" id="mainBlock" style="padding: 0px;"  >
+                        <div id="chartsContainer" style="width: 100%; height: 100%;">
+
+                            <div id="HeartRateDiv"></div>
+                            <div id="SDNNDiv"></div>
+                            <div id="StressDiv"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /inner content wrapper -->
+
+            </div>
+            <!-- /content wrapper -->
+            <a class="exit-offscreen"></a>
+        </section>
+
+
+        <!-- /main content -->
+
+
+
+    </section>
+
+</div>
+
+
+<div class="gallery-loader hide">
+    <div class="loader">
+        <div class="loaderText"></div>
+    </div>
+
+</div>
+
+
+
+
+
+<!-- core scripts -->
+<script src="plugins/jquery-1.11.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>
+<script src="plugins/jquery.slimscroll.min.js"></script>
+<script src="plugins/jquery.easing.min.js"></script>
+<script src="plugins/toastr/toastr.min.js"></script>
+
+<script src="plugins/appear/jquery.appear.js"></script>
+<script src="plugins/jquery.placeholder.js"></script>
+<script src="plugins/fastclick.js"></script>
+<!-- /core scripts -->
+
+<!-- page level scripts -->
+<!-- /page level scripts -->
+
+<!-- template scripts -->
+<script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+<script src="js/offscreen.js"></script>
+<script src="js/mtgox-history.js"></script>
+<script src="../js/parse-1.2.18.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="../js/common.js"></script>
+<script src="js/parse-1.2.18.min.js"></script>
+<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
+<script src="js/moment.js"></script>
+
+
+<script src="js/custom/charts/jquery.flot.min.js"></script>
+<script src="js/custom/charts/jquery.flot.time.min.js"></script>
+<script src="js/custom/charts/LineChart.js"></script>
+<script src="js/custom/SportsmanChartManager.js"></script>
+<script src="js/custom/CurrentUserManager.js"></script>
+<script src="js/custom/CurrentUserRealtimeManager.js"></script>
+<script src="js/custom/CurrentSportsmanMonitorManager.js"></script>
+
+<!--<script src="../js/gmaps.js"></script>-->
+
+<!--<script src="js/SimulationManager.js"></script>-->
+<!--<script src="js/MapManager.js"></script>-->
+<!--<script src="js/DispatcherSettingsManager.js"></script>-->
+<!--<script src="js/MonitoringManager.js"></script>-->
+<script src="js/main.js"></script>
+<!-- /template scripts -->
+
+<script>
+    $(function(){
+        CSMM = new CurrentSportsmanMonitorManager();
+        CSMM.init();
+    });
+
+</script>
+
+
+</body>
+<!-- /body -->
+
+</html>

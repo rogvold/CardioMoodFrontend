@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/charts/custom.css">
+
+    <!-- core scripts -->
+    <script src="plugins/jquery-1.11.1.min.js"></script>
+
+    <script src="plugins/moment.js"></script>
+
+    <script src="js/custom/charts/jquery.flot.min.js"></script>
+    <script src="js/custom/charts/jquery.flot.selection.min.js"></script>
+    <script src="js/custom/charts/jquery.flot.time.min.js"></script>
+
+
+    <title></title>
+</head>
+<body style="background: none;" >
+
+
+    <div class="app horizontal-layout boxed">
+
+        <section class="layout">
+
+            <div class="row text-center mt10">
+                <div class="  text-center col-xs-12">
+
+                    <div id="chart" class="" style="background-color: ghostwhite; margin: 0 auto; display: block; width: 60%; height: 300px; " >
+
+                    </div>
+
+                </div>
+
+                <div class="col-xs-12 text-center">
+
+                    <div style="display: block; width: 300px; margin: 0 auto;">
+                        <input class="form-control mt20" />
+                        <button class="btn mt10">apply</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+
+
+<script type="text/javascript">
+
+
+    var PendulumManager = function(){
+        var self = this;
+        this.time = 0;
+        this.dt = 100;
+        this.chart = undefined;
+        this.signal = [];
+        this.pN = 3;
+        this.pointsCount = 1000;
+        this.speed = 1.0;
+
+        this.init = function(){
+            self.initPlot();
+            self.initInterval();
+        }
+
+        this.initPlot = function(){
+            self.chart = new LineChart();
+            self.chart.init('chart');
+            self.generateSignal();
+            self.chart.drawPoints(self.signal);
+        }
+
+        this.initInterval = function(){
+            setInterval(function(){
+                self.time += self.dt;
+                self.tickCallback();
+            }, self.dt);
+        }
+
+        this.tickCallback = function(){
+            var x = self.time * self.speed / 1000.0;
+            x = x % (self.pN * 2 * Math.PI);
+            var y = Math.sin(x - Math.PI*1/2) + 1;
+            self.chart.drawPoint(x, y);
+        }
+
+        this.generateSignal = function(){
+            var arr = [];
+            var x = 0.0;
+            var n = self.pointsCount;
+            var pN = self.pN;
+            var dx = 2*pN*Math.PI / n;
+            for (var i=0; i<n; i++){
+                arr.push([x, Math.sin(x - Math.PI*1/2) + 1]);
+                x+=dx;
+            }
+            self.signal = arr;
+        }
+
+    }
+
+    $(function(){
+
+        PM = new PendulumManager();
+        PM.init();
+
+    });
+
+
+
+
+    var LineChart = function(){
+        var self = this;
+        this.divId = '';
+        this.points = [];
+        this.selectedPoints = [];
+        this.data = [];
+        this.chartName = '';
+        this.chartMode = "time";
+        this.point = undefined;
+
+        this.options = {
+            series: {
+                lines: {
+                    show: true,
+                    color: '#848ca1',
+                    lineWidth: 1
+                },
+                points: {
+                    show: false
+                }
+            }
+            ,
+            selection: {
+                mode: "x",
+                color: '#CF8886'
+            }
+//            xaxis: {
+//                ticks: tickGenerator
+//            },
+//            grid: {
+//                borderWidth: 1,
+//                borderColor: '#848ca1'
+//            }
+        };
+        this.placeholder = undefined;
+        this.plot = undefined;
+        this.selectedFrom = 0;
+        this.selectedTo = 0;
+
+
+        this.selectionCallback = function(selectedPoints){
+//        alert(ranges.from + ' - ' + ranges.to);
+//        console.log(ranges);
+        }
+
+        this.unselectionCallback = function(){
+
+        }
+
+        this.init = function(divId){
+            if (divId == undefined || divId == ""){
+                alert('divId is not defined');
+                return;
+            }
+            self.divId = divId;
+            self.placeholder = $('#' + divId);
+            self.initSelectionCallback();
+            self.plot = $.plot(self.placeholder, [self.data], self.options);
+        }
+
+        this.initSelectionCallback = function(){
+            self.placeholder.bind("plotselected", function (event, ranges) {
+                self.selectedFrom = ranges.xaxis.from,
+                        self.selectedTo = ranges.xaxis.to
+                console.log(self.selectedFrom + ' - ' + self.selectedTo);
+                var sel = [];
+                for (var i in self.points){
+
+                    if ((self.points[i][0] >= ranges.xaxis.from) && (self.points[i][0] < ranges.xaxis.to)){
+                        sel.push(self.points[i]);
+//                    console.log(self.points[i]);
+                    }
+                }
+                self.selectedPoints = sel;
+                console.log(self.selectedPoints.length);
+                self.selectionCallback(self.selectedPoints);
+            });
+            self.placeholder.bind("plotunselected", function (event) {
+                self.unselectionCallback();
+            });
+        }
+
+
+
+        this.selectRange = function(from, duration){
+            if (from == undefined || duration == undefined){
+                alert('selectRange: from or duration is not defined');
+                return;
+            }
+            var to = from + duration;
+            if (to > self.points[self.points.length - 1][0]){
+                to = self.points[self.points.length - 1][0];
+            }
+            from = Math.max(0, to - duration);
+            self.plot.setSelection({
+                xaxis: {
+                    from: from,
+                    to: to
+                }
+            });
+        }
+
+        this.filterByMaxXValue = function(points, maxX){
+            var arr = [];
+            for (var i in points){
+                if (maxX == undefined){
+                    arr.push(points[i]);
+                    continue;
+                }
+                if (points[i][0] > maxX){
+                    continue;
+                }
+                arr.push(points[i]);
+            }
+            return arr;
+        }
+
+        this.drawPoints = function(points, maxX){
+
+            console.log('LineChart drawPoints occured: points = ');
+            console.log(points);
+
+            points = self.filterByMaxXValue(points, maxX);
+
+            if (points == undefined){
+                alert('data is not defined');
+                return;
+            }
+
+
+            self.points = points;
+            self.data = {
+                label: self.chartName,
+                data: points,
+                color: '#848ca1',
+                lineWidth: 1
+            };
+
+//        self.options.xaxis.max = points[points.length  - 1][0];
+
+
+            if (self.plot == undefined){
+                self.plot = $.plot(self.placeholder, [self.data], self.options);
+            }else{
+                self.plot = $.plot(self.placeholder, [self.data], self.options);
+//            self.plot.setData([self.data]);
+//            self.plot.draw();
+            }
+
+
+        }
+
+        this.drawPoint = function(x, y){
+//            console.log(x, y);
+            var dx = 0.2;
+            var dy = 0.1;
+            var s = [self.data, {
+                data: [[x, y], [x  , y+dy], [x+dx, y+dy], [x+dx, y], [x, y], [x + dx, y+dy], [x+dx, y], [x, y+dy] ],
+                color: '#FF0000',
+                lineWidth: 2
+            }];
+            self.plot = $.plot(self.placeholder, s, self.options);
+
+        }
+
+    }
+
+    function tickGenerator(axis) {
+        var res = [];
+        var N = 6;
+        var mode = "time";
+        if (axis.max < 10){ // wtf???
+            mode = "xy";
+        }
+
+        for (var i = 0 ; i < N; i++){
+//        console.log("mode = " + mode);
+            var t = axis.min + ((axis.max - axis.min) * i * 1.0 / N);
+            if (mode == "xy"){
+                res.push([t, Math.floor(100 * t) / 100.0]);
+//            console.log('yes t = ' + t);
+                continue;
+            }
+            var h = moment.duration(t).hours();
+            var m = zerStr(moment.duration(t).minutes());
+            var s = zerStr(moment.duration(t).seconds());
+            var str = h + ':' + m + ':' + s;
+            res.push([t, str]);
+        }
+        return res;
+    }
+
+    function zerStr(t){
+        if (t < 10) return ('0' + t);
+        return t;
+    }
+
+
+</script>
+
+
+
+
+</body>
+</html>

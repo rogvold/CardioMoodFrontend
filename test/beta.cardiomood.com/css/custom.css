@@ -1,0 +1,14 @@
+.block-unit {
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border: 1px solid #cfcdc1;
+    background-color: #edede3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+body {
+    background: #e4e4da;
+    font-family: 'Open Sans', sans-serif;
+}

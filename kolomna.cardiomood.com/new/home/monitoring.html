@@ -1,0 +1,216 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="description" content="Flat, Clean, Responsive, application admin template built with bootstrap 3">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <!-- /meta -->
+
+    <title>
+        Мониторинг
+    </title>
+
+    <!-- core scripts -->
+    <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+    <script src="plugins/jquery-1.11.1.min.js"></script>
+    <script src="plugins/jquery.sparkline.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="plugins/jquery.slimscroll.min.js"></script>
+    <script src="plugins/jquery.easing.min.js"></script>
+    <script src="plugins/appear/jquery.appear.js"></script>
+    <script src="plugins/jquery.placeholder.js"></script>
+    <script src="plugins/fastclick.js"></script>
+    <!-- /core scripts -->
+
+    <!-- page level plugin styles -->
+    <!-- /page level plugin styles -->
+
+    <!-- core styles -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- /core styles -->
+
+    <script src="../js/parse-1.2.18.min.js" ></script>
+    <script src="../js/moment.js" ></script>
+
+
+    <script src="../js/common.js"></script>
+
+    <script src="js/custom/CurrentUserManager.js" ></script>
+
+    <script src="js/custom/RealTimeManager.js" ></script>
+    <script src="js/custom/MonitoringManager.js" ></script>
+
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="css/skins/palette.css">
+    <link rel="stylesheet" href="css/fonts/font.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- template styles -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- load modernizer -->
+    <script src="plugins/modernizr.js"></script>
+</head>
+
+<!-- body -->
+
+<body>
+
+
+<div class="cover" style="background-image: url(img/cover1.jpg)"></div>
+<div class="overlay bg-color"></div>
+
+<div class="app horizontal-layout boxed">
+    <!-- top header -->
+    <header class="header header-fixed navbar">
+
+        <div class="brand">
+            <!-- toggle offscreen menu -->
+            <a href="javascript:;" class="ti-menu off-left visible-xs" data-toggle="offscreen" data-move="ltr"></a>
+            <!-- /toggle offscreen menu -->
+
+            <!-- logo -->
+            <a href="index.html" class="navbar-brand">
+                <img src="img/cmLogo.png" alt="">
+                    <span class="heading-font">
+                        CardioMood<sup>Sport</sup>
+                    </span>
+            </a>
+            <!-- /logo -->
+        </div>
+
+        <ul class="nav navbar-nav">
+            <li class="hidden-xs">
+                <!-- toggle small menu -->
+                <!--<a href="javascript:;" class="toggle-sidebar">-->
+                <!--<i class="ti-menu"></i>-->
+                <!--</a>-->
+                <!-- /toggle small menu -->
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+
+            <li>
+                <a href="index.html" >
+                    <i class="ti-menu animated flash"></i>
+
+                </a>
+            </li>
+
+            <li class="off-right">
+                <a href="javascript:;" data-toggle="dropdown">
+                    <img src="img/faceless.jpg" class="header-avatar img-circle" alt="user" title="user">
+                    <span class="hidden-xs ml10 username"  >UserName</span>
+                    <i class="ti-angle-down ti-caret hidden-xs"></i>
+                </a>
+                <ul class="dropdown-menu animated fadeInRight">
+                    <li>
+                        <a href="javascript: void(0);" class="logoutLink" >Выход</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <!-- /top header -->
+
+    <section class="layout">
+
+        <!-- main content -->
+        <section class="main-content">
+
+            <!-- content wrapper -->
+            <div class="content-wrap">
+
+                <!-- inner content wrapper -->
+                <div class="wrapper">
+
+                    <div class="row" id="traineesCards">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <section class="panel panel-primary">
+                                <header class="panel-heading">
+                                    <div class="h5">
+                                        <i class=" mr5"></i>
+                                        <b><span class="traineesName" >Загрузка...</span></b>
+                                    </div>
+                                </header>
+                                <footer class="panel-footer text-center">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            <div class="small show text-uppercase text-muted">Пульс</div>
+                                            <div class="h4 no-m"><b>N/A</b>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <div class="small show text-uppercase text-muted">Стресс</div>
+                                            <div class="h4 no-m"><b>N/A</b>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <div class="small show text-uppercase text-muted">Закисл.</div>
+                                            <div class="h4 no-m"><b>N/A</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </footer>
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /inner content wrapper -->
+
+            </div>
+            <!-- /content wrapper -->
+            <a class="exit-offscreen"></a>
+        </section>
+
+
+
+    </section>
+
+</div>
+
+
+<div class="gallery-loader hide">
+    <div class="loader"></div>
+</div>
+
+
+
+<!-- page level scripts -->
+<!-- /page level scripts -->
+
+<!-- template scripts -->
+<script src="plugins/icheck/icheck.js"></script>
+<script src="js/offscreen.js"></script>
+<script src="js/main.js"></script>
+
+<!-- /template scripts -->
+
+<!-- page script -->
+<!-- /page script -->
+
+<script>
+    $(function(){
+        MM = new MonitoringManager();
+        MM.init();
+    });
+</script>
+
+</body>
+<!-- /body -->
+
+</html>

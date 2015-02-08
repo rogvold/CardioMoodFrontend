@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Группа</title>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" ></script>
+
+    <script src="../js/parse-1.2.18.min.js" type="text/javascript" ></script>
+    <script src="js/avatars.io.js" type="text/javascript" ></script>
+    <script src="../js/common.js" type="text/javascript" ></script>
+    <script src="js/StudentsManager.js" type="text/javascript" ></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top non-printable " role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Панель администрирования</a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="departments.html"  >Факультеты</a></li>
+                <li ><a href="groups.html" >Группы</a></li>
+                <li class="active" ><a href="students.html" >Студенты</a></li>
+                <li><a href="doctors.html" >Докторы</a></li>
+                <li><a href="sensors.html" >Сенсоры</a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="sub-header">Студенты</h2>
+            <h3>Фильтры</h3>
+            <div>
+                Имя: <input class="form-control" id="nameFilter" /> <br/>
+                Группа: <input class="form-control" id="groupFilter" />
+                <br/>
+            </div>
+            <div style="text-align: right;">
+                <a href="javascript: void(0);" id="printerLink"   >распечатать карточки</a>
+            </div>
+            <div class="table-responsive" style="max-height: 700px; overflow-y: auto;"  >
+                <table class="table table-striped" id="studentsTable" ></table>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<h3 style="text-align: center;">На печать:<br/></h3>
+<div class="printable" style="display: block; width: 800px; margin: 0 auto;">
+
+    <div id="print_placeholder" >
+
+    </div>
+</div>
+
+<script type="text/javascript" >
+
+    $(function(){
+        SM = new StudentsManager();
+        SM.init();
+    });
+
+
+
+</script>
+
+
+</body>
+</html>

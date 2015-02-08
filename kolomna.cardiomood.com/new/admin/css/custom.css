@@ -1,0 +1,115 @@
+#groupInfoBlock img{
+    height: 35px;
+}
+
+#studentsTable img.ava, #studentsTable img.qr, #doctorsTable img.ava, #doctorsTable img.qr{
+    height: 50px;
+    border: 1px lightgoldenrodyellow solid;
+}
+
+#avatarImg{
+    height: 60px;
+}
+
+#userAvatarImg{
+    width: 100%;
+}
+
+#userInfoBlock ul.contacts{
+    list-style: none;
+    padding-left: 0px;
+}
+
+
+
+#userInfoBlock ul.contacts .userEmail{
+   margin-left: 5px;
+}
+
+#userInfoBlock ul li .glyphicon{
+    vertical-align: text-top;
+    margin-right: 5px;
+}
+
+.QR_card{
+    font-size: 12px;
+    display: inline-block;
+    width: 300px;
+    height: 140px;
+    border: 1px dashed firebrick;
+    box-sizing: content-box;
+}
+
+.QR_img_placeholder{
+    display: inline-block;
+    height: 100%;
+    background-color: white;
+    box-sizing: content-box;
+}
+
+img.QR_img{
+    height: 100%;
+    padding: 5px;
+}
+
+.QR_info_block{
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+    padding-top: 5px;
+    padding-left: 0px;
+}
+
+.QR_header{
+    width: 100%;
+    padding-left: 10px;
+}
+
+.QR_name{
+    width: 150px;
+    margin-top: 15px;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.QR_groupNumber_placeholder{
+    padding-left: 10px;
+    font-size: 10px;
+}
+
+.QR_groupNumber{
+    font-weight: bold;
+}
+
+.QR_email{
+    text-decoration: underline;
+    font-size: 10px;
+    margin-top: 15px;
+    padding-left: 10px;
+}
+
+.QR_phone{
+    font-size: 10px;
+    padding-left: 10px;
+}
+
+.QR_sensor{
+    display: inline-block;
+    margin-left: 1px;
+    width: 80px;
+    border: 1px dashed lightcoral;
+    padding: 5px;
+    padding-bottom: 0px;
+}
+
+.QR_sensor_label{
+    display: inline-block;
+    width: 100%;
+    font-size: 8px;
+    text-align: center;
+}
+
+@media print{
+    .non-printable { display: none; }
+    .printable { display: block; }
+}
