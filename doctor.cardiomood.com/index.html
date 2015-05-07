@@ -40,6 +40,7 @@
     <script src="js/custom/CurrentUserManager.js" ></script>
     <script src="js/custom/DoctorNotificationManager.js" ></script>
     <script src="js/custom/DoctorDashboardManager.js" ></script>
+    <script src="js/custom/DoctorTestManager.js" ></script>
 
 
     <!-- template styles -->
@@ -365,6 +366,9 @@
         $(function(){
             DDM = new DoctorDashboardManager();
             DDM.init();
+
+            DTM = new DoctorTestManager();
+
         });
     </script>
 

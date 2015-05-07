@@ -81,7 +81,12 @@ var DoctorUserManager = function(){
             s+=self.getSessionItemHtml(list[i]);
         }
         $('#sessionsList').html(s);
-        $('.sessionItem:first').click();
+        if (gup('sessionId') == undefined){
+            $('.sessionItem:first').click();
+        }else{
+            var sId = gup('sessionId');
+            $('.sessionItem[data-id="' + sId + '"]').click();
+        }
     }
 
     this.getSessionItemHtml = function(session){

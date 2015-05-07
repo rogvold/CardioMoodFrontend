@@ -22,11 +22,11 @@ var DoctorDashboardManager = function(){
                 toastr.error('you are not a doctor!');
                 self.currentUserManager.logout();
             }
-            self.loadUsers(function(){
+            self.loadUsersRecursively(0, function(){
                     self.loadGroups(function(){
                         self.loadUserLinks(function() {
                             self.drawGroups();
-
+                            disablePreloader();
                         });
                     });
             });
@@ -145,10 +145,13 @@ var DoctorDashboardManager = function(){
         console.log('userLinks = ', list);
         for (var i in list){
             if (list[i].get('groupId') != gId){
+                console.log(list[i].get('groupId') + ' != ' + gId);
                 continue;
             }
+            console.log('____>>>>>_---->>> found! userId=' + list[i].get('userId'));
             arr.push(self.getUserById(list[i].get('userId')));
         }
+        console.log('--->>> users in group ' + gId + ': ', arr);
         return arr;
     }
 
@@ -292,6 +295,52 @@ var DoctorDashboardManager = function(){
             self.allSystemGroups = results;
             disablePreloader();
             callback();
+        });
+    }
+
+    this.loadUsersRecursively = function(page, callback){
+        enablePreloader();
+        var q = new Parse.Query(Parse.User);
+        q.limit(1000);
+        q.equalTo('userRole', 'user');
+        q.addAscending('lastName');
+        q.addAscending('firstName');
+        q.skip(1000 * page);
+        q.find(function(results){
+            if (results.length == 0){
+                callback();
+                return;
+            }
+            console.log('rec: page = ' + page);
+            self.users = self.users.concat(results);
+            page = page + 1;
+            self.loadUsersRecursively(page, callback);
+        });
+    }
+
+    this.testLoadingAlgo = function(){
+        loadAllDataFromParse('CardioSession', undefined, function(results){
+            var map = {};
+            var list = results;
+            console.log('loaded ' + results.length);
+            for (var i in list){
+                if (map[list[i].id] == undefined){
+                    map[list[i].id] = {
+                        numbers: [],
+                        k: 0
+                    }
+                }
+                map[list[i].id].numbers.push(i);
+                map[list[i].id].k++;
+            }
+            for (var key in map){
+                var o = map[key];
+                var k = map[key].k;
+                var numbers = map[key].numbers;
+                if (k > 1){
+                    console.log(numbers.join(', '));
+                }
+            }
         });
     }
 

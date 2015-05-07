@@ -13,8 +13,7 @@ function initParse(){
     Parse.initialize(appId, jsKey);
 }
 
-function gup( name )
-{
+function gup(name) {
     name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
     var regexS = "[\\?&]"+name+"=([^&#]*)";
     var regex = new RegExp( regexS );
@@ -132,4 +131,50 @@ function randomString(len, charSet) {
         randomString += charSet.substring(randomPoz,randomPoz+1);
     }
     return randomString;
+}
+
+
+function loadAllDataFromParseRecursively(className, params, page, createdAt, results, callback){
+    if (className == undefined){
+        callback({error: 'className is not defined'});
+        return;
+    }
+    console.log('loading ' + className + ': page = ' + page + ' createdAt =', createdAt);
+    var q = new Parse.Query(Parse.Object.extend(className));
+    q.limit(1000);
+    q.skip(page * 1000);
+    q.greaterThan('createdAt', createdAt);
+    q.addAscending('createdAt');
+    q.find(function(list){
+        if (page > 7){
+            page = 0;
+            createdAt = results[results.length - 1].createdAt;
+        }
+        page = page + 1;
+
+        results = results.concat(list);
+        if (list.length < 1000){
+            callback(results);
+            return;
+        }
+        loadAllDataFromParseRecursively(className, params, page, createdAt, results, callback);
+    });
+}
+
+function processQueryWithParams(q, params){
+    if (params == undefined){
+        return q;
+    }
+    var equalToParams = params.equalToParams;
+    if (equalToParams != undefined){
+        for (var key in equalToParams){
+            q.equalTo(key, equalToParams[key]);
+        }
+    }
+    return q;
+}
+
+function loadAllDataFromParse(className, params, callback){
+    initParse();
+    loadAllDataFromParseRecursively(className, params, 0, new Date(0), [], callback);
 }

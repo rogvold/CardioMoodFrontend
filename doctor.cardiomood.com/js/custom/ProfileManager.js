@@ -19,7 +19,8 @@ var ProfileManager = function(){
             var firstName = $('#firstName').val();
             var lastName = $('#lastName').val();
             var avatar = $('#avatar').val();
-            if (validateUrl(avatar) == false){
+            var emailNotifications = $('#emailNotifications').is(':checked');
+            if (avatar != '' && validateUrl(avatar) == false){
                 toastr.error('invalid avatar url');
                 return;
             }
@@ -27,6 +28,7 @@ var ProfileManager = function(){
             u.set('firstName', firstName);
             u.set('lastName', lastName);
             u.set('avatar', avatar);
+            u.set('emailNotifications', emailNotifications);
             enablePreloader();
             self.currentUserManager.currentUser.save().then(function(){
                 disablePreloader();
@@ -40,5 +42,10 @@ var ProfileManager = function(){
         $('#firstName').val(u.get('firstName'));
         $('#lastName').val(u.get('lastName'));
         $('#avatar').val(u.get('avatar'));
+        if (u.get('emailNotifications') == undefined || u.get('emailNotifications') == true){
+            $('#emailNotifications').attr('checked', 'true');
+        }else{
+            $('#emailNotifications').removeAttr('checked');
+        }
     }
 }

@@ -21,15 +21,28 @@ var DoctorNotificationManager = function(){
     }
 
     this.loadNotifications = function(callback){
-        var q = new Parse.Query(Parse.Object.extend('Notification'));
-        q.limit(1000);
-        q.equalTo('toId', self.currentUserManager.currentUser.id);
-        q.equalTo('status', 'NEW');
-        q.addDescending('createdAt');
-        enablePreloader('loading notifications');
-        q.find(function(results){
+        //var q = new Parse.Query(Parse.Object.extend('Notification'));
+        //q.limit(1000);
+        //q.equalTo('toId', self.currentUserManager.currentUser.id);
+        //q.equalTo('status', 'NEW');
+        //q.addDescending('createdAt');
+        //enablePreloader('loading notifications');
+        //q.find(function(results){
+        //    self.notifications = results;
+        //    console.log('notifications', results);
+        //    disablePreloader();
+        //    callback();
+        //});
+        loadAllDataFromParse('Notification', {
+            equalToParams: {
+                toId: self.currentUserManager.currentUser.id,
+                status: 'NEW'
+            }
+        }, function(results){
+            results.sort(function(a, b){
+                return moment(b.createdAt).unix() - moment(a.createdAt).unix();
+            });
             self.notifications = results;
-            console.log('notifications', results);
             disablePreloader();
             callback();
         });
