@@ -394,7 +394,7 @@ var UserDashboardManager = function(){
 
 
     this.loadUnreadMessages = function(callback){
-        Parse.Cloud.run('getNotReadMessagesNumber', {userId: 'kYNNa0WGs1'}, {
+        Parse.Cloud.run('getNotReadMessagesNumber', {userId: self.currentUserManager.currentUser.id}, {
             success:
                 function(n){
                     console.log(n);

@@ -17,6 +17,7 @@ var DoctorDashboardManager = function(){
         self.initCreateButton();
         self.initShowUsersButton();
         self.initUserLinkControls();
+        self.loadUnreadMessages();
         self.currentUserManager.init(function(){
             if (self.currentUserManager.currentUser.get('userRole') != 'doctor'){
                 toastr.error('you are not a doctor!');
@@ -343,5 +344,25 @@ var DoctorDashboardManager = function(){
             }
         });
     }
+
+
+    this.loadUnreadMessages = function(callback){
+        Parse.Cloud.run('getNotReadMessagesNumber', {userId: self.currentUserManager.currentUser.id}, {
+                success:
+                    function(n){
+                        console.log(n);
+                        if (n > 0){
+                            console.log('has not read messages !!! ');
+                            $('#notReadPlaceholder').removeClass('hide');
+                            $('#notReadBlock').html(n);
+                        }else{
+
+                        }
+                        callback();
+                    }
+            }
+        );
+    }
+
 
 }
