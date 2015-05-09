@@ -1,3 +1,11 @@
 .current_speaker {
-    background-color: rgb(135, 206, 250);
+     background-color: rgb(135, 206, 250);
+ }
+
+.pull_right{
+    float: right;
+}
+
+.pull_left{
+    float: left;
 }
