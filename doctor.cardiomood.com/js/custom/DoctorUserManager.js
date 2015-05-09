@@ -2,7 +2,8 @@
  * Created by sabir on 22.12.14.
  */
 
-var DoctorUserManager = function(){
+var
+    DoctorUserManager = function(){
     var self = this;
     //current user is Doctor
     this.currentUserManager = new CurrentUserManager();

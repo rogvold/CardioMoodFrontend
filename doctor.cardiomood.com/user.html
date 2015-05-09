@@ -130,6 +130,15 @@
 
         <ul class="nav navbar-nav navbar-right">
 
+            <li class="hidden-xs" onclick="window.location.href = 'chat'">
+                <a href="chat" data-toggle="dropdown">
+                    <i class="ti-envelope"></i>
+                    <div class="badge badge-top bg-danger animated flash hide" id="notReadPlaceholder">
+                        <span id="notReadBlock"></span>
+                    </div>
+                </a>
+            </li>
+
             <li class="off-right">
                 <a href="javascript:;" data-toggle="dropdown">
                     <!--<img src="img/faceless.jpg" class="header-avatar img-circle" alt="user" title="user">-->

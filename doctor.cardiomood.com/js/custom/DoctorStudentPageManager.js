@@ -17,6 +17,9 @@ var DoctorStudentPageManager = function(){
             if (self.currentUserManager.currentUser.get('userRole') != 'Doctor'){
                 self.currentUserManager.logout();
             }
+
+            self.loadUnreadMessages(function(){});
+
             self.chartManager.init();
             self.initStressChart();
             self.loadStudent(function(){
@@ -172,6 +175,26 @@ var DoctorStudentPageManager = function(){
 
     this.initStressChart = function(){
         self.chartManager.addCustomLineChart('stress_plot', 'stress');
+    }
+
+
+
+    this.loadUnreadMessages = function(callback){
+        Parse.Cloud.run('getNotReadMessagesNumber', {userId: self.currentUserManager.currentUser.id}, {
+                success:
+                    function(n){
+                        console.log(n);
+                        if (n > 0){
+                            console.log('has not read messages !!! ');
+                            $('#notReadPlaceholder').removeClass('hide');
+                            $('#notReadBlock').html(n);
+                        }else{
+
+                        }
+                        callback();
+                    }
+            }
+        );
     }
 
 }

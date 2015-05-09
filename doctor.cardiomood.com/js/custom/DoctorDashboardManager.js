@@ -17,8 +17,11 @@ var DoctorDashboardManager = function(){
         self.initCreateButton();
         self.initShowUsersButton();
         self.initUserLinkControls();
-        self.loadUnreadMessages();
+
         self.currentUserManager.init(function(){
+
+            self.loadUnreadMessages(function(){});
+
             if (self.currentUserManager.currentUser.get('userRole') != 'doctor'){
                 toastr.error('you are not a doctor!');
                 self.currentUserManager.logout();
