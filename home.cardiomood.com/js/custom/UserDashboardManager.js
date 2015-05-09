@@ -23,6 +23,10 @@ var UserDashboardManager = function(){
 
         self.initFilterButton();
 
+        self.loadUnreadMessages(function(){
+            console.log('not read messages block loaded');
+        });
+
         console.log('try to init chartManager');
         self.chartManager.init();
         self.initStressChart();
@@ -386,6 +390,25 @@ var UserDashboardManager = function(){
                 callback();
             }
         });
+    }
+
+
+    this.loadUnreadMessages = function(callback){
+        Parse.Cloud.run('getNotReadMessagesNumber', {userId: 'kYNNa0WGs1'}, {
+            success:
+                function(n){
+                    console.log(n);
+                    if (n > 0){
+                        console.log('has not read messages !!! ');
+                        $('#notReadPlaceholder').removeClass('hide');
+                        $('#notReadBlock').html(n);
+                    }else{
+
+                    }
+                    callback();
+                }
+            }
+        );
     }
 
 

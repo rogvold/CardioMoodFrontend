@@ -125,6 +125,15 @@
 
             <ul class="nav navbar-nav navbar-right">
 
+                <li class="hidden-xs" onclick="window.location.href = 'chat'">
+                    <a href="chat" data-toggle="dropdown">
+                        <i class="ti-envelope"></i>
+                        <div class="badge badge-top bg-danger animated flash hide" id="notReadPlaceholder">
+                            <span id="notReadBlock"></span>
+                        </div>
+                    </a>
+                </li>
+
                 <li class="hidden-xs">
                     <a href="javascript:void(0);" data-toggle="modal" data-target="#doctorsModal">
                         <i class="ti-user"></i> My Doctors
