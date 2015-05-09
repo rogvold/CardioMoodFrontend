@@ -13,7 +13,8 @@ app.config(function($locationProvider){
    });
 });
 
-app.controller('AppCtrl', ['$http', '$location', '$rootScope', '$scope', function($http, $location, $rootScope, $scope){
+app.controller('AppCtrl', ['$http', '$location', '$rootScope', '$scope', '$window',
+    function($http, $location, $rootScope, $scope, $window){
     $rootScope.userLink = 'https://api.parse.com/1/classes/UserLink/';
     $rootScope.userGroup = 'https://api.parse.com/1/classes/UserGroup/';
     $rootScope.CardioMoodChat = 'https://api.parse.com/1/classes/CardioMoodChat/';
@@ -24,7 +25,17 @@ app.controller('AppCtrl', ['$http', '$location', '$rootScope', '$scope', functio
         'X-Parse-REST-API-Key': 'pKDap5jqe7lyBG5vTRgvTz7t8AiRWXpMYbuS2oak'
     };
 
-    $rootScope.userId = $location.search()['userId'];
+    //$rootScope.userId = $location.search()['userId'];
+    initParse();
+
+    if(Parse.User == null) {
+        console.log('redirect');
+        $window.location.href = 'http://home.cardiomood.com';
+    }
+
+
+    $rootScope.userId = Parse.User.current().id;
+
     $scope.userRole = undefined;
 
     $rootScope.chatList = [];
